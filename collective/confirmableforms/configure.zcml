@@ -26,6 +26,7 @@
       name="confirm-form"
       for="*"
       class=".browser.ConfirmedFormView"
+      template="templates/form_confirmed_error.pt"
       permission="zope2.View"
       />
 

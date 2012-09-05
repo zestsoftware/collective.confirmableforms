@@ -1,4 +1,5 @@
 from Products.Five import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from collective.depositbox.store import Box
 from Products.Archetypes.interfaces.field import IField
@@ -9,7 +10,10 @@ class ConfirmedFormView(BrowserView):
         box = self.context.get_box()
         secret = self.request.form.get('secret')
         email = self.request.form.get('email')
-        data = box.get(secret, token=email)
+        data = box.pop(secret, token=email)
+
+        if data is None:
+            return self.index()
 
         form = self.context.get_form()
         fields = [fo for fo in form._getFieldObjects()

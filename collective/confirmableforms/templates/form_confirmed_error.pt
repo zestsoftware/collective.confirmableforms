@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      xml:lang="en"
+      lang="en"
+      i18n:domain="collective.confirmableforms">
+
+  <body>
+    <div metal:fill-slot="body">
+      <h1 tal:define="form context/get_form"
+          tal:content="form/Title" />
+
+      <p i18n:translate="label_secret_unknown">
+        We were not able to confirm this form. The data might have expired or the
+        activation link has already been used.
+      </p>
+    </div>
+  </body>
+</html>
