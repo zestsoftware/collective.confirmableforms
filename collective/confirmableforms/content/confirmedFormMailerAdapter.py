@@ -3,6 +3,7 @@ from Products.Archetypes import atapi
 from AccessControl import ClassSecurityInfo
 from zope.app.component.hooks import getSite
 from Products.CMFCore.utils import getToolByName
+from Products.TemplateFields import ZPTField as ZPTField
 
 from collective.depositbox.store import Box
 from Products.PloneFormGen.content.formMailerAdapter import FormMailerAdapter, formMailerAdapterSchema
@@ -31,18 +32,18 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
             )
         ),
 
-    atapi.TextField(
+    ZPTField(
         'plain_mail',
         required=True,
         widget = atapi.TextAreaWidget(
             label = _(u'label_plain_mail',
                       default=u'Confirmation mail content (text only)'),
             description = _(u'label_help_plain_mail',
-                            default = u'The content of the confirmation email. Use [[confirmation_link]] to display the confirmation link.'),
+                            default = u'The content of the confirmation email. Use [[confirmation_link]] to display the confirmation link. You can also use tal language here for complex data integration.'),
             )
         ),
 
-    atapi.TextField(
+    ZPTField(
         'html_mail',
         required=True,
         default_output_type = 'text/x-html-safe',
@@ -50,7 +51,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
             label = _(u'label_html_mail',
                       default=u'Confirmation mail content (html)'),
             description = _(u'label_help_html_mail',
-                            default = u'If the receiver can read HTML emails, this will be displayed instead of the simple text version specified above.'),
+                            default = u'If the receiver can read HTML emails, this will be displayed instead of the simple text version specified above. Use the same substitution for the link and tal language is also enabled.'),
             )
         ),
     ))
