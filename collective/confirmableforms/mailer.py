@@ -8,6 +8,9 @@ import pkg_resources
 import socket
 from Products.MailHost.MailHost import MailHostError
 
+from email.MIMEText import MIMEText
+from email.MIMEMultipart import MIMEMultipart
+
 from collective.confirmableforms import utils
 
 logger = logging.getLogger('collective.watcherlist')
@@ -20,7 +23,7 @@ if zope2_egg and (zope2_egg.parsed_version >=
     USE_SECURE_SEND = False
 
 
-def simple_send_mail(message, addresses, mfrom, subject, immediate=True):
+def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
     """Send a notification email to the list of addresses.
 
     The method is called 'simple' because all the clever stuff should
@@ -54,18 +57,27 @@ def simple_send_mail(message, addresses, mfrom, subject, immediate=True):
 
     header_charset = utils.get_charset()
 
+    text_part = MIMEText(plain, 'plain', header_charset)
+    html_part = MIMEText(html, 'html', header_charset)
+
+    email_content = MIMEMultipart('alternative')
+    email_content.epilogue = ''
+    email_content.attach(text_part)
+    email_content.attach(html_part)
+
+
     for address in addresses:
         if not address:
             continue
         try:
             if USE_SECURE_SEND:
-                mail_host.secureSend(message=message,
+                mail_host.secureSend(message=email_content,
                                      mto=address,
                                      mfrom=mfrom,
                                      subject=subject,
                                      charset=header_charset)
             else:
-                mail_host.send(message,
+                mail_host.send(email_content,
                                mto=address,
                                mfrom=mfrom,
                                subject=subject,

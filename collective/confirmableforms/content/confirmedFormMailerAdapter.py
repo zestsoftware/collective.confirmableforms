@@ -91,7 +91,7 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
             return
 
         mail_title = self.getTitle_mail()
-        mail_text_body = self.getPlain_mail()
+        mail_plain_body = self.getPlain_mail()
         mail_html_body = self.getHtml_mail()
         mail_to = self.REQUEST.form.get('replyto')
         mail_from = self.getSender_mail()
@@ -106,11 +106,12 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
             mail_to
             )
 
-        mail_text_body = mail_text_body.replace('[[confirmation_link]]', confirm_url)
+        mail_plain_body = mail_plain_body.replace('[[confirmation_link]]', confirm_url)
         mail_html_body = mail_html_body.replace('[[confirmation_link]]', confirm_url)
 
         simple_send_mail(
-            mail_text_body,
+            mail_plain_body,
+            mail_html_body,
             [mail_to],
             mail_from,
             mail_title)
