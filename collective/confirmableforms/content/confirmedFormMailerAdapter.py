@@ -10,6 +10,7 @@ from Products.PloneFormGen.content.formMailerAdapter import FormMailerAdapter, f
 from collective.confirmableforms import config
 from collective.confirmableforms import ConfirmableFormsMessageFactory as _
 from collective.confirmableforms.utils import obj_to_pobj
+from collective.confirmableforms.mailer import simple_send_mail
 
 confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema((
     atapi.StringField(
@@ -83,7 +84,6 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
             return None
 
     def send_confirmation_email(self, fields, REQUEST=None):
-        saver = self.get_save_data_adapter()
         receiver_field = self.get_mail_receiver()
 
         if receiver_field is None:
@@ -109,7 +109,11 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
         mail_text_body = mail_text_body.replace('[[confirmation_link]]', confirm_url)
         mail_html_body = mail_html_body.replace('[[confirmation_link]]', confirm_url)
 
-        print mail_text_body
+        simple_send_mail(
+            mail_text_body,
+            [mail_to],
+            mail_from,
+            mail_title)
 
 
 atapi.registerType(ConfirmedFormMailerAdapter, config.PROJECTNAME)
