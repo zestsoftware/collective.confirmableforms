@@ -1,0 +1,1 @@
+from confirmedFormMailerAdapter import ConfirmedFormMailerAdapter

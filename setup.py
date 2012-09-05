@@ -26,6 +26,8 @@ setup(name='collective.confirmableforms',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'Products.PloneFormGen',
+          'collective.depositbox',
       ],
       entry_points="""
       # -*- Entry points: -*-

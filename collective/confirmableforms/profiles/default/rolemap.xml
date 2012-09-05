@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+    <permission name="confirmableforms: add Confirmed Form Mailer Adapter"
+                acquire="True">
+      <role name="Manager" />
+    </permission>
+  </permissions>
+</rolemap>
