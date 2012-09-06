@@ -1,35 +1,127 @@
 import unittest
+import doctest
 
 #from zope.testing import doctestunit
 #from zope.component import testing
 from Testing import ZopeTestCase as ztc
 
-from Products.Five import fiveconfigure
+from Products.Five import fiveconfigure, zcml
+from Products.Five.testbrowser import Browser
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import PloneSite
+from Testing.ZopeTestCase.zopedoctest import ZopeDocFileSuite
 ptc.setupPloneSite()
 
+import Products.PloneFormGen
 import collective.confirmableforms
 
+from zope.component import getSiteManager
+from Acquisition import aq_base
+from Products.MailHost.interfaces import IMailHost
+from Products.SecureMailHost.SecureMailHost import SecureMailHost as MailBase
 
-class TestCase(ptc.PloneTestCase):
+OPTIONFLAGS = (doctest.ELLIPSIS |
+               doctest.NORMALIZE_WHITESPACE)
+
+
+class MockMailHost(MailBase):
+    """A MailHost that collects messages instead of sending them.
+
+    Thanks to Rocky Burt for inspiration.
+    """
+
+    def __init__(self, id):
+        MailBase.__init__(self, id, smtp_notls=True)
+        self.reset()
+
+    def reset(self):
+        self.messages = []
+
+    def send(self, message, mto=None, mfrom=None, subject=None, encode=None):
+        """
+        Basically construct an email.Message from the given params to make sure
+        everything is ok and store the results in the messages instance var.
+        """
+        self.messages.append(message)
+
+    def secureSend(self, message, mto, mfrom, **kwargs):
+        kwargs['debug'] = True
+        result = MailBase.secureSend(self, message=message, mto=mto,
+                                     mfrom=mfrom, **kwargs)
+        self.messages.append(result)
+
+    def validateSingleEmailAddress(self, address):
+        return True # why not
+
+
+class TestCase(ptc.FunctionalTestCase):
+    def __init__(self, *args, **kwargs):
+        super(TestCase, self).__init__(*args, **kwargs)
+        self.browser = Browser()
+
 
     class layer(PloneSite):
 
         @classmethod
         def setUp(cls):
-            fiveconfigure.debug_mode = True
-            ztc.installPackage(collective.confirmableforms)
-            fiveconfigure.debug_mode = False
+            pass
 
         @classmethod
         def tearDown(cls):
             pass
 
+    def install_pfg(self):
+        fiveconfigure.debug_mode = True
+        zcml.load_config('configure.zcml',
+                         Products.PloneFormGen)
+
+        ztc.installPackage(Products.PloneFormGen)
+        self.addProfile('Products.PloneFormGen:default')
+
+        fiveconfigure.debug_mode = False
+
+    def install_confirmableforms(self):
+        fiveconfigure.debug_mode = True
+        zcml.load_config('configure.zcml',
+                         collective.confirmableforms)
+
+        ztc.installPackage(collective.confirmableforms)
+        self.addProfile('collective.confirmableforms:default')
+
+        ztc.installPackage(collective.confirmableforms)
+        fiveconfigure.debug_mode = False
+
+    def afterSetUp(self):
+        self.portal._original_MailHost = self.portal.MailHost
+        self.portal.MailHost = mailhost = MockMailHost('MailHost')
+        sm = getSiteManager(context=self.portal)
+        sm.unregisterUtility(provided=IMailHost)
+        sm.registerUtility(mailhost, provided=IMailHost)        
+
+    def login_as_user(self, username, password):
+        portal_url = self.portal.absolute_url()
+
+        self.browser.open('%s/logout' % portal_url)
+        self.browser.open('%s/login_form' % portal_url)
+        self.browser.getControl(name='__ac_name').value = username
+        self.browser.getControl(name='__ac_password').value = password
+        self.browser.getControl(name='submit').click()
+
+
+    def login_as_manager(self):
+        self.login_as_user(ptc.portal_owner,
+                           ptc.default_password)
+
+
 
 def test_suite():
     return unittest.TestSuite([
-
+        ZopeDocFileSuite(
+            '../../README.txt',
+            package='collective.confirmableforms',
+            optionflags=OPTIONFLAGS,
+            test_class=TestCase),
+        
         # Unit tests
         #doctestunit.DocFileSuite(
         #    'README.txt', package='collective.confirmableforms',

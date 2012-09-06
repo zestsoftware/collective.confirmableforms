@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-09-06 07:31+0000\n"
+"POT-Creation-Date: 2012-09-06 08:42+0000\n"
 "PO-Revision-Date: 2012-09-06 09:57+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,22 +27,22 @@ msgid "label_confirmedmaileradapter_title"
 msgstr "Adaptateur email avec confirmation"
 
 #. Default: "If the receiver can read HTML emails, this will be displayed instead of the simple text version specified above. Use the same substitution for the link and tal language is also enabled."
-#: ./content/confirmedFormMailerAdapter.py:53
+#: ./content/confirmedFormMailerAdapter.py:54
 msgid "label_help_html_mail"
 msgstr "Si le destinataire peut lire les emails au format HTML, ce texte sera affiché. Sinon, la version texte spécifiée plus haut sera utilisée. Vous pouvez utiliser le même texte de substitution pour le lien et le langage TAL est activé."
 
 #. Default: "The content of the confirmation email. Use [[confirmation_link]] to display the confirmation link. You can also use tal language here for complex data integration."
-#: ./content/confirmedFormMailerAdapter.py:41
+#: ./content/confirmedFormMailerAdapter.py:42
 msgid "label_help_plain_mail"
 msgstr "Le contenu de l'email de confirmation. Utilisez [[confirmation_link]] pour afficher le lien de confirmation. Vous pouvez aussi utiliser le langage TAL pour insérer des données."
 
 #. Default: "Confirmation mail content (html)"
-#: ./content/confirmedFormMailerAdapter.py:51
+#: ./content/confirmedFormMailerAdapter.py:52
 msgid "label_html_mail"
 msgstr "Contenu de l'email de confirmation (format HTML)"
 
 #. Default: "Confirmation mail content (text only)"
-#: ./content/confirmedFormMailerAdapter.py:39
+#: ./content/confirmedFormMailerAdapter.py:40
 msgid "label_plain_mail"
 msgstr "Contenu de l'email de confirmation (format texte)"
 
@@ -52,12 +52,12 @@ msgid "label_secret_unknown"
 msgstr "Impossible de confirmer ce formulaire. Les données peuvent avoir expiré ou le lien d'activation a déjà été utilisé."
 
 #. Default: "Email used to send the confirmation e-mail"
-#: ./content/confirmedFormMailerAdapter.py:30
+#: ./content/confirmedFormMailerAdapter.py:31
 msgid "label_sender_mail"
 msgstr "Adresse de provenance de l'email de confirmation"
 
 #. Default: "Title for the confirmation e-mail"
-#: ./content/confirmedFormMailerAdapter.py:21
+#: ./content/confirmedFormMailerAdapter.py:22
 msgid "label_title_mail"
 msgstr "Titre pour l'email de confirmation"
 
