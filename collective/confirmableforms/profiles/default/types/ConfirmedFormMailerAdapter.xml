@@ -7,7 +7,7 @@
            i18n:translate="label_confirmedmaileradapter_title">Confirmed Mailer Adapter</property>
  <property
     name="description"
-    i18n:translate="label_confirmedmaileradapter_desc">A form action adapter that will e-mail form input.</property>
+    i18n:translate="label_confirmedmaileradapter_desc">A form action adapter that will send a confirmation email, then will e-mail form input.</property>
  <property name="content_icon">mailaction.gif</property>
  <property name="content_meta_type">ConfirmedFormMailerAdapter</property>
  <property name="product">collective.confirmableforms</property>
