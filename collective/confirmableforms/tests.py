@@ -98,6 +98,18 @@ class TestCase(ptc.FunctionalTestCase):
         sm.unregisterUtility(provided=IMailHost)
         sm.registerUtility(mailhost, provided=IMailHost)        
 
+        # This hack allows us to get the traceback when an
+        # 500 error is raised while using the browser.
+        self.portal.error_log._ignored_exceptions = ()
+        def raising(self, info):
+            import traceback
+            traceback.print_tb(info[2])
+            print info[1]
+
+        from Products.SiteErrorLog.SiteErrorLog import SiteErrorLog
+        SiteErrorLog.raising = raising
+
+
     def login_as_user(self, username, password):
         portal_url = self.portal.absolute_url()
 

@@ -25,17 +25,4 @@ via Zope quick installer or Plone add-on control panel page.
     >>> form.getControl(name='products:list').value = ['PloneFormGen']
     >>> form.submit('Activate')
 
-    >>> self.browser.open(installer_url)
-    >>> form = self.browser.getForm(index=1)
-    >>> form.getControl(name='products:list').value = ['collective.confirmableforms']
-    >>> form.submit('Activate')
-
-
-Using:
-======
-
-First, you need to create a new form:
-
-    >>> self.browser.open(portal_url)
-    >>> self.browser.open('%s/createObject?type_name=FormFolder' % portal_url)
 
