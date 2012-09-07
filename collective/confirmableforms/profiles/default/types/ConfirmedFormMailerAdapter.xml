@@ -4,10 +4,10 @@
    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
    i18n:domain="collective.confirmableforms">
  <property name="title"
-           i18n:translate="label_confirmedmaileradapter_title">Confirmed Mailer Adapter</property>
+           i18n:translate="">Confirmed Mailer Adapter</property>
  <property
     name="description"
-    i18n:translate="label_confirmedmaileradapter_desc">A form action adapter that will send a confirmation email, then will e-mail form input.</property>
+    i18n:translate="">A form action adapter that will send a confirmation email, then will e-mail form input.</property>
  <property name="content_icon">mailaction.gif</property>
  <property name="content_meta_type">ConfirmedFormMailerAdapter</property>
  <property name="product">collective.confirmableforms</property>
