@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-09-07 14:39+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"POT-Creation-Date: 2012-09-07 15:07+0000\n"
+"PO-Revision-Date: 2012-09-07 17:07+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,50 +16,50 @@ msgstr ""
 
 #: ./content/confirmedFormMailerAdapter.py:25
 msgid "Confirmation email"
-msgstr ""
+msgstr "Bevestigingsmail"
 
 #. Default: "A form action adapter that will send a confirmation email, then will e-mail form input."
 #: ./profiles/default/types/ConfirmedFormMailerAdapter.xml
 msgid "label_confirmedmaileradapter_desc"
-msgstr ""
+msgstr "Deze adapter stuur eerst een bericht naar degene die het formulier heeft ingevuld met daarin een bevestigingslink. Na het klikken op de link wordt pas het normale bericht aan de geaddresseerde(n) doorgestuurd."
 
 #. Default: "Confirmed Mailer Adapter"
 #: ./profiles/default/types/ConfirmedFormMailerAdapter.xml
 msgid "label_confirmedmaileradapter_title"
-msgstr ""
+msgstr "E-mail actie met bevestiging"
 
 #. Default: "If the receiver can read HTML emails, this will be displayed instead of the simple text version specified above. Use the same substitution for the link and tal language is also enabled."
 #: ./content/confirmedFormMailerAdapter.py:57
 msgid "label_help_html_mail"
-msgstr ""
+msgstr "Als de ontvanger HTML e-mails kan lezen, zal deze content getoond worden in plaats van de platte tekst. "
 
 #. Default: "The content of the confirmation email. Use [[confirmation_link]] to display the confirmation link. You can also use tal language here for complex data integration."
 #: ./content/confirmedFormMailerAdapter.py:44
 msgid "label_help_plain_mail"
-msgstr ""
+msgstr "De inhoud van het bevestigingsbericht. Gebruik [[confirmation_link]] voor het invoegen van de bevestigingslink."
 
 #. Default: "Content of the confirmation email (HTML)"
 #: ./content/confirmedFormMailerAdapter.py:55
 msgid "label_html_mail"
-msgstr ""
+msgstr "Inhoud van het bevestigingsbericht (HTML)"
 
 #. Default: "Content of the confirmation email (plain text)"
 #: ./content/confirmedFormMailerAdapter.py:42
 msgid "label_plain_mail"
-msgstr ""
+msgstr "Inhoud van het bevestigingsbericht (platte tekst)"
 
 #. Default: "We were not able to confirm this form. The data might have expired or the activation link has already been used."
 #: ./templates/form_confirmed_error.pt:15
 msgid "label_secret_unknown"
-msgstr ""
+msgstr "Uw bestelling is niet bevestigd, Uw gegevens zijn verlopen of uw bestelling is reeds eerder bevestigd."
 
-#. Default: "From-address used to send the confirmation e-mail"
+#. Default: "From address used to send the confirmation e-mail"
 #: ./content/confirmedFormMailerAdapter.py:32
 msgid "label_sender_mail"
-msgstr ""
+msgstr "Afzender e-mailadres van het bevestigingsbericht"
 
 #. Default: "Subject for the confirmation e-mail"
 #: ./content/confirmedFormMailerAdapter.py:22
 msgid "label_title_mail"
-msgstr ""
+msgstr "Onderwerp van het bevestigingsbericht"
 

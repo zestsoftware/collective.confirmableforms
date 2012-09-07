@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-09-07 14:39+0000\n"
-"PO-Revision-Date: 2012-09-06 09:57+0200\n"
+"POT-Creation-Date: 2012-09-07 15:07+0000\n"
+"PO-Revision-Date: 2012-09-07 17:07+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: ./content/confirmedFormMailerAdapter.py:25
 msgid "Confirmation email"
-msgstr ""
+msgstr "Email de confirmation"
 
 #. Default: "A form action adapter that will send a confirmation email, then will e-mail form input."
 #: ./profiles/default/types/ConfirmedFormMailerAdapter.xml
@@ -42,13 +42,11 @@ msgstr "Le contenu de l'email de confirmation. Utilisez [[confirmation_link]] po
 
 #. Default: "Content of the confirmation email (HTML)"
 #: ./content/confirmedFormMailerAdapter.py:55
-#, fuzzy
 msgid "label_html_mail"
 msgstr "Contenu de l'email de confirmation (format HTML)"
 
 #. Default: "Content of the confirmation email (plain text)"
 #: ./content/confirmedFormMailerAdapter.py:42
-#, fuzzy
 msgid "label_plain_mail"
 msgstr "Contenu de l'email de confirmation (format texte)"
 
@@ -57,15 +55,13 @@ msgstr "Contenu de l'email de confirmation (format texte)"
 msgid "label_secret_unknown"
 msgstr "Impossible de confirmer ce formulaire. Les données peuvent avoir expiré ou le lien d'activation a déjà été utilisé."
 
-#. Default: "From-address used to send the confirmation e-mail"
+#. Default: "From address used to send the confirmation e-mail"
 #: ./content/confirmedFormMailerAdapter.py:32
-#, fuzzy
 msgid "label_sender_mail"
 msgstr "Adresse de provenance de l'email de confirmation"
 
 #. Default: "Subject for the confirmation e-mail"
 #: ./content/confirmedFormMailerAdapter.py:22
-#, fuzzy
 msgid "label_title_mail"
 msgstr "Titre pour l'email de confirmation"
 

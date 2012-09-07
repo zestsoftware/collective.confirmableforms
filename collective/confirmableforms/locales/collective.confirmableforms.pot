@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-09-07 14:39+0000\n"
+"POT-Creation-Date: 2012-09-07 15:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "label_secret_unknown"
 msgstr ""
 
-#. Default: "From-address used to send the confirmation e-mail"
+#. Default: "From address used to send the confirmation e-mail"
 #: ./content/confirmedFormMailerAdapter.py:32
 msgid "label_sender_mail"
 msgstr ""
