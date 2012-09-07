@@ -30,7 +30,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
         required=False,
         widget=atapi.StringWidget(
             label = _(u'label_sender_mail',
-                      default=u'From-address used to send the confirmation e-mail'),
+                      default=u'From address used to send the confirmation e-mail'),
             ),
         schemata = _('Confirmation email')
         ),
