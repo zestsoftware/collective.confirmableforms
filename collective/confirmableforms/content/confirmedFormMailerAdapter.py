@@ -20,17 +20,19 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
         required=True,
         widget=atapi.StringWidget(
             label = _(u'label_title_mail',
-                      default=u'Title for the confirmation e-mail'),
-            )
+                      default=u'Subject for the confirmation e-mail'),
+            ),
+        schemata = _('Confirmation email')
         ),
 
     atapi.StringField(
         'sender_mail',
-        required=True,
+        required=False,
         widget=atapi.StringWidget(
             label = _(u'label_sender_mail',
-                      default=u'Email used to send the confirmation e-mail'),
-            )
+                      default=u'From-address used to send the confirmation e-mail'),
+            ),
+        schemata = _('Confirmation email')
         ),
 
     ZPTField(
@@ -38,10 +40,11 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
         required=True,
         widget = atapi.TextAreaWidget(
             label = _(u'label_plain_mail',
-                      default=u'Confirmation mail content (text only)'),
+                      default=u'Content of the confirmation email (plain text)'),
             description = _(u'label_help_plain_mail',
                             default = u'The content of the confirmation email. Use [[confirmation_link]] to display the confirmation link. You can also use tal language here for complex data integration.'),
-            )
+            ),
+        schemata = _('Confirmation email')
         ),
 
     HTMLZPTField(
@@ -50,10 +53,11 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
         default_output_type = 'text/x-html-safe',
         widget = atapi.RichWidget(
             label = _(u'label_html_mail',
-                      default=u'Confirmation mail content (html)'),
+                      default=u'Content of the confirmation email (HTML)'),
             description = _(u'label_help_html_mail',
                             default = u'If the receiver can read HTML emails, this will be displayed instead of the simple text version specified above. Use the same substitution for the link and tal language is also enabled.'),
-            )
+            ),
+        schemata = _('Confirmation email')
         ),
     ))
 
