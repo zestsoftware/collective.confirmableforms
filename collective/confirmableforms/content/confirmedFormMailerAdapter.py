@@ -13,6 +13,9 @@ from collective.confirmableforms import ConfirmableFormsMessageFactory as _
 from collective.confirmableforms.utils import obj_to_pobj
 from collective.confirmableforms.mailer import simple_send_mail
 from collective.confirmableforms.fields import HTMLZPTField
+from Products.CMFPlone import PloneMessageFactory as PMF
+
+PMF('Confirmation email')
 
 confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema((
     atapi.StringField(
@@ -22,7 +25,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
             label = _(u'label_title_mail',
                       default=u'Subject for the confirmation e-mail'),
             ),
-        schemata = _('Confirmation email')
+        schemata = 'confirmation'
         ),
 
     atapi.StringField(
@@ -32,7 +35,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
             label = _(u'label_sender_mail',
                       default=u'From address used to send the confirmation e-mail'),
             ),
-        schemata = _('Confirmation email')
+        schemata = 'confirmation'
         ),
 
     ZPTField(
@@ -44,7 +47,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
             description = _(u'label_help_plain_mail',
                             default = u'The content of the confirmation email. Use [[confirmation_link]] to display the confirmation link. You can also use tal language here for complex data integration.'),
             ),
-        schemata = _('Confirmation email')
+        schemata = 'confirmation'
         ),
 
     HTMLZPTField(
@@ -57,7 +60,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
             description = _(u'label_help_html_mail',
                             default = u'If the receiver can read HTML emails, this will be displayed instead of the simple text version specified above. Use the same substitution for the link and tal language is also enabled.'),
             ),
-        schemata = _('Confirmation email')
+        schemata = 'confirmation'
         ),
     ))
 
