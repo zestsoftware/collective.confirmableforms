@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2 (unreleased)
+1.2 (2012-09-07)
 ----------------
 
 - Sender email is not mandatory anymore. We use the one set in Plone
