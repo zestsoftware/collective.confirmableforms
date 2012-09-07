@@ -13,7 +13,7 @@ from email.MIMEMultipart import MIMEMultipart
 
 from collective.confirmableforms import utils
 
-logger = logging.getLogger('collective.watcherlist')
+logger = logging.getLogger('collective.confirmableforms')
 
 zope2_egg = pkg_resources.working_set.find(
     pkg_resources.Requirement.parse('Zope2'))
@@ -54,6 +54,9 @@ def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
         print 'Message ='
         print message
         return
+
+    if not mfrom:
+        mfrom = utils.get_mail_from_address()
 
     header_charset = utils.get_charset()
 

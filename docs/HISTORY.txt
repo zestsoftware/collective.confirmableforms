@@ -4,7 +4,12 @@ Changelog
 1.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Sender email is not mandatory anymore. We use the one set in Plone
+  if no address is given. [vincent]
+
+- Dutch translations. [jladage]
+
+- Fixes in labels and display in the edit form. [vincent]
 
 
 1.1 (2012-09-07)
