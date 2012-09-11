@@ -85,6 +85,7 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
         if not hasattr(self, '_deposit_box'):
             self._deposit_box = Box()
 
+        self._deposit_box.max_age = self.getExpiration_time()
         return self._deposit_box
 
     security.declarePrivate('onSuccess')
