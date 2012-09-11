@@ -13,9 +13,7 @@ from collective.confirmableforms import ConfirmableFormsMessageFactory as _
 from collective.confirmableforms.utils import obj_to_pobj
 from collective.confirmableforms.mailer import simple_send_mail
 from collective.confirmableforms.fields import HTMLZPTField
-from Products.CMFPlone import PloneMessageFactory as PMF
 
-PMF('Confirmation email')
 
 confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema((
     atapi.StringField(
@@ -62,6 +60,21 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
             ),
         schemata = 'confirmation'
         ),
+
+    atapi.IntegerField(
+        'expiration_time',
+        required=False,
+        default=7,
+        widget=atapi.IntegerWidget(
+            label = _(u'label_expiration_time',
+                      default=u'Expiration time'),
+            description = _(u'label_help_expiration_time',
+                            default = u'Maximum number of days allowed to confirm the form.'),
+
+            ),
+        schemata = 'confirmation'
+        ),
+
     ))
 
 class ConfirmedFormMailerAdapter(FormMailerAdapter):
