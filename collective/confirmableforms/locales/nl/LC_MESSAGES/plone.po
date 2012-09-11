@@ -1,0 +1,20 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.confirmableforms 1.0\n"
+"POT-Creation-Date: 2012-09-10 13:18+0000\n"
+"PO-Revision-Date: 2012-09-10 15:18 +0200\n"
+"Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
+"Language-Team: Zest Software <info@zestsoftware.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: nl\n"
+"Language-Name: Nederlands\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+# Schemata names.
+# See http://reinout.vanrees.org/weblog/2007/12/14/translating-schemata-names.html
+msgid "label_schema_confirmation"
+msgstr "Bevestiging"

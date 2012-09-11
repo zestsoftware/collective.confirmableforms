@@ -4,4 +4,8 @@
 Paste*
 PasteDeploy*
 PasteScript*
+bin
+develop-eggs
 dist*
+parts
+var

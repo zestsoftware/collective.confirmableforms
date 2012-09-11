@@ -1,0 +1,59 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.confirmableforms 1.0\n"
+"POT-Creation-Date: 2012-09-07 16:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ./profiles/default/types/ConfirmedFormMailerAdapter.xml
+msgid "A form action adapter that will send a confirmation email, then will e-mail form input."
+msgstr ""
+
+#: ./profiles/default/types/ConfirmedFormMailerAdapter.xml
+msgid "Confirmed Mailer Adapter"
+msgstr ""
+
+#. Default: "If the receiver can read HTML emails, this will be displayed instead of the simple text version specified above. Use the same substitution for the link and tal language is also enabled."
+#: ./content/confirmedFormMailerAdapter.py:60
+msgid "label_help_html_mail"
+msgstr ""
+
+#. Default: "The content of the confirmation email. Use [[confirmation_link]] to display the confirmation link. You can also use tal language here for complex data integration."
+#: ./content/confirmedFormMailerAdapter.py:47
+msgid "label_help_plain_mail"
+msgstr ""
+
+#. Default: "Content of the confirmation email (HTML)"
+#: ./content/confirmedFormMailerAdapter.py:58
+msgid "label_html_mail"
+msgstr ""
+
+#. Default: "Content of the confirmation email (plain text)"
+#: ./content/confirmedFormMailerAdapter.py:45
+msgid "label_plain_mail"
+msgstr ""
+
+#. Default: "We were not able to confirm this form. The data might have expired or the activation link has already been used."
+#: ./templates/form_confirmed_error.pt:15
+msgid "label_secret_unknown"
+msgstr ""
+
+#. Default: "From address used to send the confirmation e-mail"
+#: ./content/confirmedFormMailerAdapter.py:35
+msgid "label_sender_mail"
+msgstr ""
+
+#. Default: "Subject for the confirmation e-mail"
+#: ./content/confirmedFormMailerAdapter.py:25
+msgid "label_title_mail"
+msgstr ""
+
