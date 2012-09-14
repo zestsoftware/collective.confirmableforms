@@ -1,12 +1,9 @@
+from AccessControl import ClassSecurityInfo
 from Acquisition import aq_parent
 from Products.Archetypes import atapi
-from AccessControl import ClassSecurityInfo
-from zope.app.component.hooks import getSite
-from Products.CMFCore.utils import getToolByName
-from Products.TemplateFields import ZPTField as ZPTField
-
-from collective.depositbox.store import Box
 from Products.PloneFormGen.content.formMailerAdapter import FormMailerAdapter, formMailerAdapterSchema
+from Products.TemplateFields import ZPTField as ZPTField
+from collective.depositbox.store import Box
 
 from collective.confirmableforms import config
 from collective.confirmableforms import ConfirmableFormsMessageFactory as _
@@ -76,6 +73,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
         ),
 
     ))
+
 
 class ConfirmedFormMailerAdapter(FormMailerAdapter):
     schema = confirmedFormMailerAdapterSchema

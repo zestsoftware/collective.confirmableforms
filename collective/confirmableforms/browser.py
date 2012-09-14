@@ -1,9 +1,7 @@
-from Products.Five import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
-from collective.depositbox.store import Box
 from Products.Archetypes.interfaces.field import IField
+from Products.Five import BrowserView
 from Products.PloneFormGen import implementedOrProvidedBy
+
 
 class ConfirmedFormView(BrowserView):
     def __call__(self):

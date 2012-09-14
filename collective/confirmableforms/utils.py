@@ -3,11 +3,11 @@
 
 try:
     from email.utils import parseaddr, formataddr
+    parseaddr, formataddr  # pyflakes
 except ImportError:
     # BBB for python2.4 (Plone 3)
     from email.Utils import parseaddr, formataddr
 
-from AccessControl import Unauthorized
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import getSiteEncoding
 from Products.CMFPlone.utils import safe_unicode
@@ -75,6 +75,7 @@ def get_mail_from_address():
         mfrom = from_address
     return mfrom
 
+
 def obj_to_pobj(o):
     """ Return an object to a persistent object.
     Only works on list and dictionaries for now.
@@ -88,12 +89,14 @@ def obj_to_pobj(o):
 
     return o
 
+
 def list_to_plist(l):
     pl = PersistentList()
     for val in l:
         pl.append(obj_to_pobj(val))
 
     return pl
+
 
 def dict_to_pdict(d):
     pd = PersistentDict()

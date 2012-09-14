@@ -1,25 +1,20 @@
 import unittest
 import doctest
 
-#from zope.testing import doctestunit
-#from zope.component import testing
-from Testing import ZopeTestCase as ztc
-
 from Products.Five import fiveconfigure, zcml
 from Products.Five.testbrowser import Browser
+from Products.MailHost.interfaces import IMailHost
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import PloneSite
+from Products.SecureMailHost.SecureMailHost import SecureMailHost as MailBase
+from Testing import ZopeTestCase as ztc
 from Testing.ZopeTestCase.zopedoctest import ZopeDocFileSuite
-ptc.setupPloneSite()
-
+from zope.component import getSiteManager
 import Products.PloneFormGen
+
 import collective.confirmableforms
 
-from zope.component import getSiteManager
-from Acquisition import aq_base
-from Products.MailHost.interfaces import IMailHost
-from Products.SecureMailHost.SecureMailHost import SecureMailHost as MailBase
-
+ptc.setupPloneSite()
 OPTIONFLAGS = (doctest.ELLIPSIS |
                doctest.NORMALIZE_WHITESPACE)
 
@@ -51,14 +46,13 @@ class MockMailHost(MailBase):
         self.messages.append(result)
 
     def validateSingleEmailAddress(self, address):
-        return True # why not
+        return True  # why not
 
 
 class TestCase(ptc.FunctionalTestCase):
     def __init__(self, *args, **kwargs):
         super(TestCase, self).__init__(*args, **kwargs)
         self.browser = Browser()
-
 
     class layer(PloneSite):
 
@@ -109,7 +103,6 @@ class TestCase(ptc.FunctionalTestCase):
         from Products.SiteErrorLog.SiteErrorLog import SiteErrorLog
         SiteErrorLog.raising = raising
 
-
     def login_as_user(self, username, password):
         portal_url = self.portal.absolute_url()
 
@@ -119,11 +112,9 @@ class TestCase(ptc.FunctionalTestCase):
         self.browser.getControl(name='__ac_password').value = password
         self.browser.getControl(name='submit').click()
 
-
     def login_as_manager(self):
         self.login_as_user(ptc.portal_owner,
                            ptc.default_password)
-
 
 
 def test_suite():

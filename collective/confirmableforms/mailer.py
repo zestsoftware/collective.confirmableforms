@@ -52,7 +52,7 @@ def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
         print 'Subject =', subject
         print 'Addresses =', addresses
         print 'Message ='
-        print message
+        print plain
         return
 
     if not mfrom:
@@ -67,7 +67,6 @@ def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
     email_content.epilogue = ''
     email_content.attach(text_part)
     email_content.attach(html_part)
-
 
     for address in addresses:
         if not address:

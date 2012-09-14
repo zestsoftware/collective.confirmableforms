@@ -1,4 +1,3 @@
-from AccessControl import allow_module
 from Products.Archetypes import listTypes
 from Products.Archetypes.atapi import process_types
 from Products.CMFCore import utils as cmfutils
@@ -12,7 +11,8 @@ ConfirmableFormsMessageFactory = MessageFactory(config.PROJECTNAME)
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""
     import content
-    content # PYFLAKES
+    content
+    # PYFLAKES
 
     permissions = dict(
         ConfirmedFormMailerAdapter='confirmableforms: add Confirmed Form Mailer Adapter',
