@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: collective.confirmableforms 1.0\n"
 "POT-Creation-Date: 2012-09-14 12:34+0000\n"
 "PO-Revision-Date: 2012-09-11 18:17+0200\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
+"Language-Team: Zest Software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: nl\n"
+"Language-Name: Nederlands\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: DOMAIN\n"
+"Domain: collective.confirmableforms\n"
 
 #: ./profiles/default/types/ConfirmedFormMailerAdapter.xml
 msgid "A form action adapter that will send a confirmation email, then will e-mail form input."
@@ -25,7 +25,7 @@ msgstr "E-mail actie met bevestiging"
 #. Default: "\n                Pick a page contained in the form that you wish to show\n                when the form submission has been confirmed.\n                (If none are available, add one.)\n                Choose none to display the standard thanks page of the form.\n            "
 #: ./content/confirmedFormMailerAdapter.py:67
 msgid "help_thankspage_text"
-msgstr ""
+msgstr "Selecteer een pagina die u wilt tonen na het bevestigen van het formulier. (Als er geen pagina beschikbaar is, voeg er één toe.). Indien u geen pagina selecteert, wordt de 'Bedankt' pagina getoond die op het formulier is ingesteld."
 
 #. Default: "Expiration time"
 #: ./content/confirmedFormMailerAdapter.py:81
@@ -70,7 +70,7 @@ msgstr "Afzender e-mailadres van het bevestigingsbericht"
 #. Default: "Thanks Page"
 #: ./content/confirmedFormMailerAdapter.py:66
 msgid "label_thankspage_text"
-msgstr ""
+msgstr "'Bedankt' pagina"
 
 #. Default: "Subject for the confirmation e-mail"
 #: ./content/confirmedFormMailerAdapter.py:20
