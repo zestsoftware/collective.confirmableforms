@@ -20,5 +20,9 @@ class ConfirmedFormView(BrowserView):
         self.request.form = data
         self.context.send_form(fields, self.request)
 
-        thanks = form.get(form.thanksPage)
+        # Get the thank you page.
+        thankspage = self.context.thanksPage
+        if not thankspage:
+            thankspage = form.thanksPage
+        thanks = form.get(thankspage)
         return thanks()

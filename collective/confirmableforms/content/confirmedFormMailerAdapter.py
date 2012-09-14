@@ -58,6 +58,21 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
         schemata = 'confirmation'
         ),
 
+    atapi.StringField('thanksPage',
+        searchable=False,
+        required=False,
+        vocabulary='thanksPageVocabulary',
+        widget=atapi.SelectionWidget(
+            label=_(u'label_thankspage_text', default=u'Thanks Page'),
+            description=_(u'help_thankspage_text', default=u"""
+                Pick a page contained in the form that you wish to show
+                when the form submission has been confirmed.
+                (If none are available, add one.)
+                Choose none to display the standard thanks page of the form.
+            """),
+            ),
+        ),
+
     atapi.IntegerField(
         'expiration_time',
         required=False,

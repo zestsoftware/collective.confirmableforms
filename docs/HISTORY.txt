@@ -4,6 +4,11 @@ Changelog
 1.4 (unreleased)
 ----------------
 
+- Add a field to select a different thank-you page to show when the
+  form has been confirmed.  Fall back to the standard thank-you page
+  of the form.
+  [maurits]
+
 - When there is no plain text or no html text, do not send that part.
   [maurits]
 
