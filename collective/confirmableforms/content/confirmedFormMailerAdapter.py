@@ -9,7 +9,6 @@ from collective.confirmableforms import config
 from collective.confirmableforms import ConfirmableFormsMessageFactory as _
 from collective.confirmableforms.utils import obj_to_pobj
 from collective.confirmableforms.mailer import simple_send_mail
-from collective.confirmableforms.fields import HTMLZPTField
 
 
 confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema((
@@ -45,7 +44,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
         schemata = 'confirmation'
         ),
 
-    HTMLZPTField(
+    ZPTField(
         'html_mail',
         required=True,
         default_output_type = 'text/x-html-safe',
