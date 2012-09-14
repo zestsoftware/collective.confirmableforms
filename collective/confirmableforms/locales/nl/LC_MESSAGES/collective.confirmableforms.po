@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.confirmableforms 1.0\n"
-"POT-Creation-Date: 2012-09-14 12:34+0000\n"
+"POT-Creation-Date: 2012-09-14 13:31+0000\n"
 "PO-Revision-Date: 2012-09-11 18:17+0200\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
@@ -22,18 +22,22 @@ msgstr "Deze adapter stuur eerst een bericht naar degene die het formulier heeft
 msgid "Confirmed Mailer Adapter"
 msgstr "E-mail actie met bevestiging"
 
+#: ./content/confirmedFormMailerAdapter.py:107
+msgid "You must specify either a plain text or html mail (or both)."
+msgstr "U moet een platte tekst of html versie opgeven (of beide)."
+
 #. Default: "\n                Pick a page contained in the form that you wish to show\n                when the form submission has been confirmed.\n                (If none are available, add one.)\n                Choose none to display the standard thanks page of the form.\n            "
 #: ./content/confirmedFormMailerAdapter.py:67
 msgid "help_thankspage_text"
 msgstr "Selecteer een pagina die u wilt tonen na het bevestigen van het formulier. (Als er geen pagina beschikbaar is, voeg er één toe.). Indien u geen pagina selecteert, wordt de 'Bedankt' pagina getoond die op het formulier is ingesteld."
 
 #. Default: "Expiration time"
-#: ./content/confirmedFormMailerAdapter.py:81
+#: ./content/confirmedFormMailerAdapter.py:82
 msgid "label_expiration_time"
 msgstr "Vervaltijd"
 
 #. Default: "Maximum number of days allowed to confirm the form."
-#: ./content/confirmedFormMailerAdapter.py:83
+#: ./content/confirmedFormMailerAdapter.py:84
 msgid "label_help_expiration_time"
 msgstr "Maximum aantal dagen waarbinnen het formulier bevestigd moet worden voordat de bevestigingsllink vervalt."
 

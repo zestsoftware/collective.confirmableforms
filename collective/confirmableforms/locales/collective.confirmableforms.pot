@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-09-14 12:34+0000\n"
+"POT-Creation-Date: 2012-09-14 13:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,18 +22,22 @@ msgstr ""
 msgid "Confirmed Mailer Adapter"
 msgstr ""
 
+#: ./content/confirmedFormMailerAdapter.py:107
+msgid "You must specify either a plain text or html mail (or both)."
+msgstr ""
+
 #. Default: "\n                Pick a page contained in the form that you wish to show\n                when the form submission has been confirmed.\n                (If none are available, add one.)\n                Choose none to display the standard thanks page of the form.\n            "
 #: ./content/confirmedFormMailerAdapter.py:67
 msgid "help_thankspage_text"
 msgstr ""
 
 #. Default: "Expiration time"
-#: ./content/confirmedFormMailerAdapter.py:81
+#: ./content/confirmedFormMailerAdapter.py:82
 msgid "label_expiration_time"
 msgstr ""
 
 #. Default: "Maximum number of days allowed to confirm the form."
-#: ./content/confirmedFormMailerAdapter.py:83
+#: ./content/confirmedFormMailerAdapter.py:84
 msgid "label_help_expiration_time"
 msgstr ""
 
