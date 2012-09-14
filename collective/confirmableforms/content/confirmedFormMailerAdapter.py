@@ -70,6 +70,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
                 Choose none to display the standard thanks page of the form.
             """),
             ),
+        schemata = 'confirmation'
         ),
 
     atapi.IntegerField(
