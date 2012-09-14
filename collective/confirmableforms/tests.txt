@@ -1,0 +1,20 @@
+Tests
+=====
+
+
+Test installation
+-----------------
+
+Add ``collective.confirmableforms`` to your buildout and install it
+via Zope quick installer or Plone add-on control panel page.
+
+    >>> portal_url = self.portal.absolute_url()
+    >>> self.login_as_manager()
+    >>> self.browser.open(portal_url)
+    >>> self.browser.getLink('Site Setup').click()
+    >>> self.browser.getLink('Add-ons').click()
+
+    >>> installer_url = self.browser.url
+    >>> form = self.browser.getForm(index=1)
+    >>> form.getControl(name='products:list').value = ['PloneFormGen']
+    >>> form.submit('Activate')

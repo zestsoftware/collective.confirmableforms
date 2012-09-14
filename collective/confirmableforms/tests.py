@@ -120,7 +120,7 @@ class TestCase(ptc.FunctionalTestCase):
 def test_suite():
     return unittest.TestSuite([
         ZopeDocFileSuite(
-            '../../README.txt',
+            'tests.txt',
             package='collective.confirmableforms',
             optionflags=OPTIONFLAGS,
             test_class=TestCase),
