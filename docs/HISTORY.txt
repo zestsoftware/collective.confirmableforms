@@ -4,6 +4,10 @@ Changelog
 1.4 (unreleased)
 ----------------
 
+- Make the plain_mail and html_mail fields optional, but give a
+  validation error when neither of them is filled in.
+  [maurits]
+
 - Add a field to select a different thank-you page to show when the
   form has been confirmed.  Fall back to the standard thank-you page
   of the form or the fg_result_view page.

@@ -1,6 +1,7 @@
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_parent
 from Products.Archetypes import atapi
+from Products.CMFCore import permissions
 from Products.PloneFormGen.content.formMailerAdapter import FormMailerAdapter, formMailerAdapterSchema
 from Products.TemplateFields import ZPTField as ZPTField
 from collective.depositbox.store import Box
@@ -34,7 +35,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
 
     ZPTField(
         'plain_mail',
-        required=True,
+        required=False,
         widget = atapi.TextAreaWidget(
             label = _(u'label_plain_mail',
                       default=u'Content of the confirmation email (plain text)'),
@@ -46,7 +47,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
 
     ZPTField(
         'html_mail',
-        required=True,
+        required=False,
         default_output_type = 'text/x-html-safe',
         widget = atapi.TextAreaWidget(
             label = _(u'label_html_mail',
@@ -93,6 +94,22 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
 class ConfirmedFormMailerAdapter(FormMailerAdapter):
     schema = confirmedFormMailerAdapterSchema
     security = ClassSecurityInfo()
+
+    security.declareProtected(permissions.View, 'post_validate')
+    def post_validate(self, REQUEST=None, errors=None):
+        """Perform a check after validation.
+
+        We do not want to make plain_mail and html_mail required, but
+        we do need at least one of them filled.
+        """
+        if (not REQUEST.form.get('plain_mail').strip() and
+                not REQUEST.form.get('html_mail').strip()):
+            error_message = _((u"You must specify either a plain text or "
+                               u"html mail (or both)."))
+            if not 'plain_mail' in errors:
+                errors['plain_mail'] = error_message
+            if not 'html_mail' in errors:
+                errors['html_mail'] = error_message
 
     def get_box(self):
         if not hasattr(self, '_deposit_box'):
