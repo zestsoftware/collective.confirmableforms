@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.4 (unreleased)
+1.4 (2012-09-14)
 ----------------
 
 - Make the plain_mail and html_mail fields optional, but give a
