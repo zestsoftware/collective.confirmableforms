@@ -96,7 +96,7 @@ class TestCase(ptc.FunctionalTestCase):
         self.portal.MailHost = mailhost = MockMailHost('MailHost')
         sm = getSiteManager(context=self.portal)
         sm.unregisterUtility(provided=IMailHost)
-        sm.registerUtility(mailhost, provided=IMailHost)        
+        sm.registerUtility(mailhost, provided=IMailHost)
 
         # This hack allows us to get the traceback when an
         # 500 error is raised while using the browser.
@@ -133,7 +133,7 @@ def test_suite():
             package='collective.confirmableforms',
             optionflags=OPTIONFLAGS,
             test_class=TestCase),
-        
+
         # Unit tests
         #doctestunit.DocFileSuite(
         #    'README.txt', package='collective.confirmableforms',

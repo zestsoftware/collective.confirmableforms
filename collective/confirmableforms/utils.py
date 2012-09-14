@@ -79,7 +79,7 @@ def obj_to_pobj(o):
     """ Return an object to a persistent object.
     Only works on list and dictionaries for now.
     """
-    
+
     if isinstance(o, list):
         return list_to_plist(o)
 

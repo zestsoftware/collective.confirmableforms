@@ -17,7 +17,7 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <!-- -*- extra stuff goes here -*- -->
-  
+
   <permission
     id="confirmableforms.AddConfirmedFormMailerAdapter"
     title="confirmableforms: add Confirmed Form Mailer Adapter"
