@@ -4,7 +4,9 @@ Changelog
 1.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Do not use a RichTextWidget for the html field.  Any tal fields
+  would get stripped.
+  [maurits]
 
 
 1.3.1 (2012-09-11)

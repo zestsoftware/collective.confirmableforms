@@ -49,7 +49,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema
         'html_mail',
         required=True,
         default_output_type = 'text/x-html-safe',
-        widget = atapi.RichWidget(
+        widget = atapi.TextAreaWidget(
             label = _(u'label_html_mail',
                       default=u'Content of the confirmation email (HTML)'),
             description = _(u'label_help_html_mail',
