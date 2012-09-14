@@ -17,7 +17,11 @@ class ConfirmedFormView(BrowserView):
         fields = [fo for fo in form._getFieldObjects()
                   if not implementedOrProvidedBy(IField, fo)]
 
-        self.request.form = data
+        # Put the data in the request.  Make it a dictionary,
+        # otherwise the fg_result_view does not work, as an anonymous
+        # user is not authorized to get items from the data, as it is
+        # a PersistentMapping.
+        self.request.form = dict(data)
         self.context.send_form(fields, self.request)
 
         # Get the thank you page.
@@ -25,4 +29,6 @@ class ConfirmedFormView(BrowserView):
         if not thankspage:
             thankspage = form.thanksPage
         thanks = form.get(thankspage)
+        if thanks is None:
+            thanks = form.unrestrictedTraverse('fg_result_view')
         return thanks()
