@@ -112,8 +112,8 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
             return
 
         mail_title = self.getTitle_mail()
-        mail_plain_body = self.getPlain_mail()
-        mail_html_body = self.getHtml_mail()
+        mail_plain_body = self.getPlain_mail().strip()
+        mail_html_body = self.getHtml_mail().strip()
         mail_to = self.REQUEST.form.get('replyto')
         mail_from = self.getSender_mail()
 

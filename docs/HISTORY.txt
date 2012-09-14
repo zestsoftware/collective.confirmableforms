@@ -4,7 +4,10 @@ Changelog
 1.4 (unreleased)
 ----------------
 
-- Do not use a RichTextWidget for the html field.  Any tal fields
+- When there is no plain text or no html text, do not send that part.
+  [maurits]
+
+- Do not use a RichTextWidget for the html field.  Any tal tags
   would get stripped.
   [maurits]
 

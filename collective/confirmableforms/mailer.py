@@ -63,10 +63,18 @@ def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
     text_part = MIMEText(plain, 'plain', header_charset)
     html_part = MIMEText(html, 'html', header_charset)
 
-    email_content = MIMEMultipart('alternative')
-    email_content.epilogue = ''
-    email_content.attach(text_part)
-    email_content.attach(html_part)
+    if plain and html:
+        email_content = MIMEMultipart('alternative')
+        email_content.epilogue = ''
+        email_content.attach(text_part)
+        email_content.attach(html_part)
+    elif plain:
+        email_content = text_part
+    elif html:
+        email_content = html_part
+    else:
+        # Hm, that's weird.
+        email_content = ''
 
     for address in addresses:
         if not address:
