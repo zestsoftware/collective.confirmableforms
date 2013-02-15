@@ -11,7 +11,11 @@ except ImportError:
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import getSiteEncoding
 from Products.CMFPlone.utils import safe_unicode
-from zope.app.component.hooks import getSite
+try:
+    from zope.component.hooks import getSite
+    getSite  # pyflakes
+except ImportError:
+    from zope.app.component.hooks import getSite
 from zope.component import getMultiAdapter
 from persistent.dict import PersistentDict
 from persistent.list import PersistentList
