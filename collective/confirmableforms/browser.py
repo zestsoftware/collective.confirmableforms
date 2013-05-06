@@ -1,6 +1,5 @@
 from Products.Archetypes.interfaces.field import IField
 from Products.Five import BrowserView
-from Products.PloneFormGen import implementedOrProvidedBy
 
 
 class ConfirmedFormView(BrowserView):
@@ -15,7 +14,7 @@ class ConfirmedFormView(BrowserView):
 
         form = self.context.get_form()
         fields = [fo for fo in form._getFieldObjects()
-                  if not implementedOrProvidedBy(IField, fo)]
+                  if not IField.providedBy(fo)]
 
         # Put the data in the request.  Make it a dictionary,
         # otherwise the fg_result_view does not work, as an anonymous
