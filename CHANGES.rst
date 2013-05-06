@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.5 (unreleased)
-----------------
+1.4.1 (2013-05-06)
+------------------
 
 - Remove implementedOrProvidedBy import from PloneFormGen that was only meant
   for Z2 interfaces compatibility. Removed from PFG 1.7.7.
