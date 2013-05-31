@@ -97,11 +97,9 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
 
     security.declareProtected(permissions.View, 'post_validate')
     def post_validate(self, REQUEST=None, errors=None):
-        """Perform a check after validation.
-
-        We do not want to make plain_mail and html_mail required, but
-        we do need at least one of them filled.
-        """
+        # Perform a check after validation.  We do not want to make
+        # plain_mail and html_mail required, but we do need at least
+        # one of them filled.
         if (not REQUEST.form.get('plain_mail').strip() and
                 not REQUEST.form.get('html_mail').strip()):
             error_message = _((u"You must specify either a plain text or "
@@ -111,6 +109,7 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
             if not 'html_mail' in errors:
                 errors['html_mail'] = error_message
 
+    security.declarePrivate('get_box')
     def get_box(self):
         if not hasattr(self, '_deposit_box'):
             self._deposit_box = Box()
@@ -123,19 +122,21 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
         # Well, we'll deal with that later on.
         self.send_confirmation_email(fields, REQUEST)
 
+    security.declareProtected(permissions.View, 'get_form')
     def get_form(self):
         return aq_parent(self)
 
+    security.declareProtected(permissions.View, 'get_mail_receiver')
     def get_mail_receiver(self):
-        """ That does not really get the email value but checks that
-        there's a rep[lyto field available in the form.
-        """
+        # This does not really get the email value but checks that
+        # there is a replyto field available in the form.
         form = self.get_form()
         try:
             return form.get('replyto')
         except:
             return None
 
+    security.declarePrivate('send_confirmation_email')
     def send_confirmation_email(self, fields, REQUEST=None):
         receiver_field = self.get_mail_receiver()
 

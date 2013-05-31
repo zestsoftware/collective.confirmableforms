@@ -4,7 +4,8 @@ Changelog
 1.4.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Make more secure.
+  [maurits]
 
 
 1.4.1 (2013-05-06)
