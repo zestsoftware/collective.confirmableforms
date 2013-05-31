@@ -4,6 +4,9 @@ Changelog
 1.4.2 (unreleased)
 ------------------
 
+- Do not give our ConfirmedFormMailerAdapter a workflow.
+  [maurits]
+
 - Make more secure.
   [maurits]
 
