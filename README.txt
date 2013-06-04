@@ -15,3 +15,14 @@ Installing
 Add ``collective.confirmableforms`` to your buildout and install it
 via Zope quick installer or Plone add-on control panel page.  First
 install ``PloneFormGen`` itself, then ``collective.confirmableforms``.
+
+
+Sponsorship
+===========
+
+Work on collective.confirmableforms has been made possible by The Flemish
+Environment Agency or VMM. See http://www.vmm.be. VMM operates as an agency of
+the Flemish government for a better environment in Flanders. Flanders is one of
+the three Belgian regions with its own government, parliament and
+administration. The other two are the Brussels-Capital Region and the Walloon
+Region.
