@@ -4,7 +4,8 @@ Changelog
 1.4.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Package cleanup. Added test extra, although we have no interesting tests.
+  [maurits]
 
 
 1.4.2 (2013-05-31)
