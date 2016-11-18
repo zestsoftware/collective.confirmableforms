@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.confirmableforms 1.0\n"
-"POT-Creation-Date: 2012-09-14 13:31+0000\n"
+"POT-Creation-Date: 2016-11-18 16:10+0000\n"
 "PO-Revision-Date: 2012-09-11 18:17+0200\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
@@ -22,9 +22,17 @@ msgstr "Deze adapter stuur eerst een bericht naar degene die het formulier heeft
 msgid "Confirmed Mailer Adapter"
 msgstr "E-mail actie met bevestiging"
 
-#: ./content/confirmedFormMailerAdapter.py:107
+#: ./configure.zcml:18
+msgid "Installs the collective.confirmableforms package"
+msgstr ""
+
+#: ./content/confirmedFormMailerAdapter.py:105
 msgid "You must specify either a plain text or html mail (or both)."
 msgstr "U moet een platte tekst of html versie opgeven (of beide)."
+
+#: ./configure.zcml:18
+msgid "collective.confirmableforms"
+msgstr ""
 
 #. Default: "\n                Pick a page contained in the form that you wish to show\n                when the form submission has been confirmed.\n                (If none are available, add one.)\n                Choose none to display the standard thanks page of the form.\n            "
 #: ./content/confirmedFormMailerAdapter.py:67
@@ -80,4 +88,3 @@ msgstr "'Bedankt' pagina"
 #: ./content/confirmedFormMailerAdapter.py:20
 msgid "label_title_mail"
 msgstr "Onderwerp van het bevestigingsbericht"
-

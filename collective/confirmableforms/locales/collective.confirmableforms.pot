@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-09-14 13:31+0000\n"
+"POT-Creation-Date: 2016-11-18 16:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,16 @@ msgstr ""
 msgid "Confirmed Mailer Adapter"
 msgstr ""
 
-#: ./content/confirmedFormMailerAdapter.py:107
+#: ./configure.zcml:18
+msgid "Installs the collective.confirmableforms package"
+msgstr ""
+
+#: ./content/confirmedFormMailerAdapter.py:105
 msgid "You must specify either a plain text or html mail (or both)."
+msgstr ""
+
+#: ./configure.zcml:18
+msgid "collective.confirmableforms"
 msgstr ""
 
 #. Default: "\n                Pick a page contained in the form that you wish to show\n                when the form submission has been confirmed.\n                (If none are available, add one.)\n                Choose none to display the standard thanks page of the form.\n            "
@@ -80,4 +88,3 @@ msgstr ""
 #: ./content/confirmedFormMailerAdapter.py:20
 msgid "label_title_mail"
 msgstr ""
-
