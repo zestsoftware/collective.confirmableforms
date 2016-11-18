@@ -5,7 +5,7 @@ version = '1.4.3.dev0'
 setup(name='collective.confirmableforms',
       version=version,
       description="A Plone add on to simplify form confirmation by e-mail.",
-      long_description=(open("README.txt").read() + "\n" +
+      long_description=(open("README.rst").read() + "\n" +
                         open("CHANGES.rst").read()),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
