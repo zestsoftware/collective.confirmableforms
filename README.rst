@@ -9,6 +9,12 @@ This products relies on PloneFormGen and collective.depositbox to
 store the data waiting for validation.
 
 
+Compatibility
+=============
+
+This has been tested with Plone 4.3 and PloneFormGen 1.7.
+
+
 Installing
 ==========
 
