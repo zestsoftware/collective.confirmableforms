@@ -1,17 +1,16 @@
 # This was stolen from Maurits van Rees code for collective.watcherlist
 # https://github.com/collective/collective.watcherlist/blob/master/collective/watcherlist/mailer.py
 
-import logging
-
+from collective.confirmableforms import utils
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
+from Products.MailHost.MailHost import MailHostError
 from smtplib import SMTPException
+
+import logging
 import pkg_resources
 import socket
-from Products.MailHost.MailHost import MailHostError
 
-from email.MIMEText import MIMEText
-from email.MIMEMultipart import MIMEMultipart
-
-from collective.confirmableforms import utils
 
 logger = logging.getLogger('collective.confirmableforms')
 

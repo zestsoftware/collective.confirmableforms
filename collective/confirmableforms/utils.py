@@ -8,17 +8,19 @@ except ImportError:
     # BBB for python2.4 (Plone 3)
     from email.Utils import parseaddr, formataddr
 
+from persistent.dict import PersistentDict
+from persistent.list import PersistentList
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import getSiteEncoding
 from Products.CMFPlone.utils import safe_unicode
+from zope.component import getMultiAdapter
+
+
 try:
     from zope.component.hooks import getSite
     getSite  # pyflakes
 except ImportError:
     from zope.app.component.hooks import getSite
-from zope.component import getMultiAdapter
-from persistent.dict import PersistentDict
-from persistent.list import PersistentList
 
 
 DEFAULT_CHARSET = 'utf-8'

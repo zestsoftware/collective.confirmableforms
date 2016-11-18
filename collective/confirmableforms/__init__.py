@@ -1,10 +1,11 @@
 from Products.Archetypes import listTypes
 from Products.Archetypes.atapi import process_types
 from Products.CMFCore import utils as cmfutils
+from zope.i18nmessageid import MessageFactory
+
 import config
 
 
-from zope.i18nmessageid import MessageFactory
 ConfirmableFormsMessageFactory = MessageFactory(config.PROJECTNAME)
 
 

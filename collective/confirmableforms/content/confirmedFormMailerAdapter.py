@@ -1,15 +1,15 @@
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_parent
-from Products.Archetypes import atapi
-from Products.CMFCore import permissions
-from Products.PloneFormGen.content.formMailerAdapter import FormMailerAdapter, formMailerAdapterSchema
-from Products.TemplateFields import ZPTField as ZPTField
-from collective.depositbox.store import Box
-
 from collective.confirmableforms import config
 from collective.confirmableforms import ConfirmableFormsMessageFactory as _
-from collective.confirmableforms.utils import obj_to_pobj
 from collective.confirmableforms.mailer import simple_send_mail
+from collective.confirmableforms.utils import obj_to_pobj
+from collective.depositbox.store import Box
+from Products.Archetypes import atapi
+from Products.CMFCore import permissions
+from Products.PloneFormGen.content.formMailerAdapter import FormMailerAdapter
+from Products.PloneFormGen.content.formMailerAdapter import formMailerAdapterSchema
+from Products.TemplateFields import ZPTField as ZPTField
 
 
 confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + atapi.Schema((

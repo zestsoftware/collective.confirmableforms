@@ -1,7 +1,5 @@
-import unittest
-import doctest
-
-from Products.Five import fiveconfigure, zcml
+from Products.Five import fiveconfigure
+from Products.Five import zcml
 from Products.Five.testbrowser import Browser
 from Products.MailHost.interfaces import IMailHost
 from Products.PloneTestCase import PloneTestCase as ptc
@@ -10,9 +8,12 @@ from Products.SecureMailHost.SecureMailHost import SecureMailHost as MailBase
 from Testing import ZopeTestCase as ztc
 from Testing.ZopeTestCase.zopedoctest import ZopeDocFileSuite
 from zope.component import getSiteManager
-import Products.PloneFormGen
 
 import collective.confirmableforms
+import doctest
+import Products.PloneFormGen
+import unittest
+
 
 ptc.setupPloneSite()
 OPTIONFLAGS = (doctest.ELLIPSIS |
