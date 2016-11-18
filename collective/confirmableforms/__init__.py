@@ -11,12 +11,11 @@ ConfirmableFormsMessageFactory = MessageFactory(config.PROJECTNAME)
 
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""
-    import content
-    content
-    # PYFLAKES
+    import content  # noqa
 
     permissions = dict(
-        ConfirmedFormMailerAdapter='confirmableforms: add Confirmed Form Mailer Adapter',
+        ConfirmedFormMailerAdapter=(
+            'confirmableforms: add Confirmed Form Mailer Adapter'),
     )
 
     # Initialize portal content

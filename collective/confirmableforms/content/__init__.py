@@ -1,1 +1,1 @@
-from confirmedFormMailerAdapter import ConfirmedFormMailerAdapter
+from confirmedFormMailerAdapter import ConfirmedFormMailerAdapter  # noqa
