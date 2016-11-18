@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.4.3 (unreleased)
+1.4.3 (2016-11-18)
 ------------------
 
 - Added more info in readme on how to use this.  [maurits]
