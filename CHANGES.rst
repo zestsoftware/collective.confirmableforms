@@ -4,6 +4,8 @@ Changelog
 1.4.3 (unreleased)
 ------------------
 
+- Added more info in readme on how to use this.  [maurits]
+
 - Package cleanup. Added test extra, although we have no interesting tests.
   [maurits]
 

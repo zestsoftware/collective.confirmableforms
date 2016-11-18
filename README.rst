@@ -17,6 +17,45 @@ via Zope quick installer or Plone add-on control panel page.  First
 install ``PloneFormGen`` itself, then ``collective.confirmableforms``.
 
 
+Form setup
+==========
+
+- Add a PloneFormGen form.
+
+- In this form, add a Confirmed Mailer Adapter.
+
+- On the Confirmation tab of this mailer, set a plain or html text
+  that includes ``[[confirmation_link]]`` to display the confirmation
+  link.
+
+- Remove any other action adapters from the form, especially the
+  default Mailer Adapter, otherwise the other actions are executed
+  anyway, even when the form has not been confirmed via email yet.
+
+- You probably want to edit the thanks page and say here that the user
+  will be getting an email and should click on the link there.
+
+- You can add a second thanks page to say that the email has been succesfully confirmed.
+  Edit the Confirmed Mailer Adapter and select this as thanks page on the confirmation tab.
+
+
+How it works for the visitor
+============================
+
+- A visitor fills in the form and submits it.
+
+- The thanks page of the form is displayed.
+
+- The visitor gets an email with a link to confirm his input.
+
+- The visitor clicks on the link.
+
+- The normal part of the mailer kicks in, sending an email to an admin, or however you have set it up.
+  This works the same as the default mailer.
+
+- The visitor sees the thanks page that is configured in the Confirmed Mailer Adapter.
+
+
 Sponsorship
 ===========
 
