@@ -11,7 +11,6 @@ except ImportError:
 from persistent.dict import PersistentDict
 from persistent.list import PersistentList
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.utils import getSiteEncoding
 from Products.CMFPlone.utils import safe_unicode
 from zope.component import getMultiAdapter
 
@@ -42,7 +41,7 @@ def get_charset():
         return DEFAULT_CHARSET
     charset = portal.getProperty('email_charset', '')
     if not charset:
-        charset = getSiteEncoding(portal)
+        charset = 'utf-8'
     return charset
 
 
