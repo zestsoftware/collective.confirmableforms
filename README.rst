@@ -65,3 +65,11 @@ the Flemish government for a better environment in Flanders. Flanders is one of
 the three Belgian regions with its own government, parliament and
 administration. The other two are the Brussels-Capital Region and the Walloon
 Region.
+
+
+Links
+=====
+
+- Code: https://github.com/zestsoftware/collective.confirmableforms
+
+- Issue tracker: https://github.com/zestsoftware/collective.confirmableforms/issues
