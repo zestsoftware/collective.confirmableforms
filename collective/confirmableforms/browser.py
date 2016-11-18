@@ -3,6 +3,7 @@ from Products.Five import BrowserView
 
 
 class ConfirmedFormView(BrowserView):
+
     def __call__(self):
         box = self.context.get_box()
         secret = self.request.form.get('secret')

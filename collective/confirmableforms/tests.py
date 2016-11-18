@@ -51,6 +51,7 @@ class MockMailHost(MailBase):
 
 
 class TestCase(ptc.FunctionalTestCase):
+
     def __init__(self, *args, **kwargs):
         super(TestCase, self).__init__(*args, **kwargs)
         self.browser = Browser()
@@ -96,6 +97,7 @@ class TestCase(ptc.FunctionalTestCase):
         # This hack allows us to get the traceback when an
         # 500 error is raised while using the browser.
         self.portal.error_log._ignored_exceptions = ()
+
         def raising(self, info):
             import traceback
             traceback.print_tb(info[2])
@@ -127,25 +129,25 @@ def test_suite():
             test_class=TestCase),
 
         # Unit tests
-        #doctestunit.DocFileSuite(
+        # doctestunit.DocFileSuite(
         #    'README.txt', package='collective.confirmableforms',
         #    setUp=testing.setUp, tearDown=testing.tearDown),
 
-        #doctestunit.DocTestSuite(
+        # doctestunit.DocTestSuite(
         #    module='collective.confirmableforms.mymodule',
         #    setUp=testing.setUp, tearDown=testing.tearDown),
 
 
         # Integration tests that use PloneTestCase
-        #ztc.ZopeDocFileSuite(
+        # ztc.ZopeDocFileSuite(
         #    'README.txt', package='collective.confirmableforms',
         #    test_class=TestCase),
 
-        #ztc.FunctionalDocFileSuite(
+        # ztc.FunctionalDocFileSuite(
         #    'browser.txt', package='collective.confirmableforms',
         #    test_class=TestCase),
 
-        ])
+    ])
 
 if __name__ == '__main__':
     unittest.main(defaultTest='test_suite')

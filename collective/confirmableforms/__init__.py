@@ -17,7 +17,7 @@ def initialize(context):
 
     permissions = dict(
         ConfirmedFormMailerAdapter='confirmableforms: add Confirmed Form Mailer Adapter',
-        )
+    )
 
     # Initialize portal content
     content_types, constructors, ftis = process_types(
@@ -29,7 +29,7 @@ def initialize(context):
         kind = "%s: %s" % (config.PROJECTNAME, atype.archetype_name)
         cmfutils.ContentInit(
             kind,
-            content_types = (atype, ),
-            permission = permissions[atype.portal_type],
-            extra_constructors = (constructor, ),
-            ).initialize(context)
+            content_types=(atype, ),
+            permission=permissions[atype.portal_type],
+            extra_constructors=(constructor, ),
+        ).initialize(context)
