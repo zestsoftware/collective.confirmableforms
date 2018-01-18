@@ -4,7 +4,9 @@ Changelog
 1.4.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Automatically install PloneFormGen during our own install.
+  This makes sure PloneFormGen is installed first.
+  [maurits]
 
 
 1.4.3 (2016-11-18)
