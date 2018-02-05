@@ -72,7 +72,7 @@ msgstr "Inhoud van het bevestigingsbericht (platte tekst)"
 #. Default: "We were not able to confirm this form. The data might have expired or the activation link has already been used."
 #: ./templates/form_confirmed_error.pt:15
 msgid "label_secret_unknown"
-msgstr "Uw bestelling is niet bevestigd, Uw gegevens zijn verlopen of uw bestelling is reeds eerder bevestigd."
+msgstr "Uw e-mail is niet bevestigd, uw gegevens zijn verlopen of uw e-mail is al eerder bevestigd."
 
 #. Default: "From address used to send the confirmation e-mail"
 #: ./content/confirmedFormMailerAdapter.py:30
