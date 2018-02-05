@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.0 (unreleased)
+2.0.0 (2018-02-05)
 ------------------
 
 - Added ``send_standard_mail`` boolean.  Default is true.
