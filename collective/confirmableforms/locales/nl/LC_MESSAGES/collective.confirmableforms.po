@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.confirmableforms 1.0\n"
 "POT-Creation-Date: 2018-02-05 15:59+0000\n"
-"PO-Revision-Date: 2016-11-18 17:26+0100\n"
+"PO-Revision-Date: 2018-02-05 17:01+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr "collective.confirmableforms"
 #. Default: "After the user has confirmed the email address by clicking on the confirmation link, send the standard mail, as if this was a standard mail action adapter."
 #: ./content/confirmedFormMailerAdapter.py:119
 msgid "help_send_standard_mail"
-msgstr ""
+msgstr "Nadat de bezoeker het e-mailadres heeft bevestigd door de link in de bevestigingmail te volgen, stuurt dit de standaard mail, alsof dit een standaard mail actie adapter is."
 
 #. Default: "Pick a page contained in the form that you wish to show when the form submission has been confirmed. (If none are available, add one.) Choose none to display the standard thanks page of the form."
 #: ./content/confirmedFormMailerAdapter.py:83
@@ -82,7 +82,7 @@ msgstr "Uw e-mail is niet bevestigd, uw gegevens zijn verlopen of uw e-mail is a
 #. Default: "Send standard mail after confirmation"
 #: ./content/confirmedFormMailerAdapter.py:117
 msgid "label_send_standard_mail"
-msgstr ""
+msgstr "Stuur standaard mail na bevestiging"
 
 #. Default: "From address used to send the confirmation e-mail"
 #: ./content/confirmedFormMailerAdapter.py:32
