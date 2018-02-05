@@ -4,10 +4,28 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
     i18n_domain="collective.confirmableforms">
 
   <five:registerPackage package="." initialize=".initialize" />
   <i18n:registerTranslations directory="locales" />
+  <include package="collective.monkeypatcher" />
+
+  <monkey:patch
+      description="Get either ConfirmedMailerAdapter or all adapters"
+      class="Products.PloneFormGen.content.form.FormFolder"
+      original="getRawActionAdapter"
+      replacement=".patches.getRawActionAdapter"
+      preserveOriginal="true"
+      />
+
+  <monkey:patch
+      description="Enable getRawActionAdapter patch for relevant requests"
+      class="Products.PloneFormGen.content.form.FormFolder"
+      original="fgProcessActionAdapters"
+      replacement=".patches.fgProcessActionAdapters"
+      preserveOriginal="true"
+      />
 
   <genericsetup:registerProfile
       name="default"
@@ -35,7 +53,7 @@
 
   <browser:page
       name="confirm-form"
-      for="*"
+      for=".interfaces.IConfirmedFormMailerAdapter"
       class=".browser.ConfirmedFormView"
       template="templates/form_confirmed_error.pt"
       permission="zope2.View"

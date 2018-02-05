@@ -2,6 +2,7 @@ from AccessControl import ClassSecurityInfo
 from Acquisition import aq_parent
 from collective.confirmableforms import config
 from collective.confirmableforms import ConfirmableFormsMessageFactory as _
+from collective.confirmableforms.interfaces import IConfirmedFormMailerAdapter
 from collective.confirmableforms.mailer import simple_send_mail
 from collective.confirmableforms.utils import obj_to_pobj
 from collective.depositbox.store import Box
@@ -10,6 +11,7 @@ from Products.CMFCore import permissions
 from Products.PloneFormGen.content.formMailerAdapter import FormMailerAdapter
 from Products.PloneFormGen.content.formMailerAdapter import formMailerAdapterSchema  # noqa
 from Products.TemplateFields import ZPTField as ZPTField
+from zope.interface import implementer
 
 
 confirmedSchema = atapi.Schema((
@@ -110,6 +112,7 @@ confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + \
     confirmedSchema
 
 
+@implementer(IConfirmedFormMailerAdapter)
 class ConfirmedFormMailerAdapter(FormMailerAdapter):
     schema = confirmedFormMailerAdapterSchema
     security = ClassSecurityInfo()

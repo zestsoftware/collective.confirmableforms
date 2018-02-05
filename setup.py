@@ -29,6 +29,7 @@ setup(
         'setuptools',
         'Products.PloneFormGen',
         'collective.depositbox',
+        'collective.monkeypatcher',
     ],
     extras_require={
         'test': [

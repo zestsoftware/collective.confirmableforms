@@ -4,6 +4,11 @@ Changelog
 1.4.4 (unreleased)
 ------------------
 
+- Automatically ignore all other action adapters during first submission.
+  Automatically ignore our ConfirmedFormMailerAdapter after confirmed submission.
+  This makes it possible to have for example a Script adapter called only after confirmed submission.
+  [maurits]
+
 - Automatically install PloneFormGen during our own install.
   This makes sure PloneFormGen is installed first.
   [maurits]

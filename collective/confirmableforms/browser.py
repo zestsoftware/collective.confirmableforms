@@ -1,5 +1,10 @@
+from collective.confirmableforms.interfaces import IConfirmedSubmission
 from Products.Archetypes.interfaces.field import IField
 from Products.Five import BrowserView
+from Products.statusmessages.interfaces import IStatusMessage
+from zope.interface import alsoProvides
+
+import transaction
 
 
 class ConfirmedFormView(BrowserView):
@@ -13,6 +18,7 @@ class ConfirmedFormView(BrowserView):
         if data is None:
             return self.index()
 
+        alsoProvides(self.request, IConfirmedSubmission)
         form = self.context.get_form()
         fields = [fo for fo in form._getFieldObjects()
                   if not IField.providedBy(fo)]
@@ -22,7 +28,19 @@ class ConfirmedFormView(BrowserView):
         # user is not authorized to get items from the data, as it is
         # a PersistentMapping.
         self.request.form = dict(data)
+
+        # Send mail that would be send when this would have been
+        # a standard FormMailerAdapter.
         self.context.send_form(fields, self.request)
+
+        # Process the other adapters.  First argument is 'errors'.
+        result = form.fgProcessActionAdapters(
+            {}, fields=fields, REQUEST=self.request)
+        if result:
+            # We have an error.  Abort any changes.
+            transaction.abort()
+            IStatusMessage(self.request).addStatusMessage(result, type='error')
+            return self.index()
 
         # Get the thank you page.
         thankspage = self.context.thanksPage
