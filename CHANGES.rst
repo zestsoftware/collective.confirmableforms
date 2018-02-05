@@ -4,6 +4,11 @@ Changelog
 1.4.4 (unreleased)
 ------------------
 
+- Added ``send_standard_mail`` boolean.  Default is true.
+  If set, after the email address is confirmed, the standard mail is sent,
+  as if this was a standard mail action adapter.
+  [maurits]
+
 - Automatically ignore all other action adapters during first submission.
   Automatically ignore our ConfirmedFormMailerAdapter after confirmed submission.
   This makes it possible to have for example a Script adapter called only after confirmed submission.

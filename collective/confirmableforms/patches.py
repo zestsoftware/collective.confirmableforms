@@ -27,7 +27,8 @@ ConfirmedFormMailerAdapter.
 
 Q: When is the IConfirmedSubmission marker interface set?
 A: This is done in our confirmation browser view if the confirmation is valid.
-This view first sends a mail like the standard FormMailerAdapter would do.
+If the send_standard_mail field is set in the adapter,
+this view first sends a mail like the standard FormMailerAdapter would do.
 The confirmation view then calls fgProcessActionAdapters.
 This then calls getRawActionAdapter, which returns all except our
 ConfirmedFormMailerAdapter.

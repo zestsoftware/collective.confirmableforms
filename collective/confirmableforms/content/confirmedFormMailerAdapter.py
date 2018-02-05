@@ -107,6 +107,26 @@ confirmedSchema = atapi.Schema((
         schemata='confirmation'
     ),
 
+    atapi.BooleanField(
+        'send_standard_mail',
+        required=0,
+        searchable=0,
+        default='1',
+        languageIndependent=1,
+        widget=atapi.BooleanWidget(
+            label=_(u'label_send_standard_mail',
+                    default=u'Send standard mail after confirmation'),
+            description=_(
+                u'help_send_standard_mail',
+                default=u"After the user has confirmed the email address "
+                u"by clicking on the confirmation link, "
+                u"send the standard mail, as if this was a standard "
+                u"mail action adapter."
+            ),
+        ),
+        schemata='confirmation'
+    ),
+
 ))
 confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + \
     confirmedSchema

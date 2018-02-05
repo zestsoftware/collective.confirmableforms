@@ -31,7 +31,8 @@ class ConfirmedFormView(BrowserView):
 
         # Send mail that would be send when this would have been
         # a standard FormMailerAdapter.
-        self.context.send_form(fields, self.request)
+        if self.context.send_standard_mail:
+            self.context.send_form(fields, self.request)
 
         # Process the other adapters.  First argument is 'errors'.
         result = form.fgProcessActionAdapters(
