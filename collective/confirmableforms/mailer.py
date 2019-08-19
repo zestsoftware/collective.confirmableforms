@@ -14,11 +14,9 @@ import socket
 
 logger = logging.getLogger('collective.confirmableforms')
 
-zope2_egg = pkg_resources.working_set.find(
-    pkg_resources.Requirement.parse('Zope2'))
+zope2_egg = pkg_resources.working_set.find(pkg_resources.Requirement.parse('Zope2'))
 USE_SECURE_SEND = True
-if zope2_egg and (zope2_egg.parsed_version >=
-                  pkg_resources.parse_version('2.12.3')):
+if zope2_egg and (zope2_egg.parsed_version >= pkg_resources.parse_version('2.12.3')):
     USE_SECURE_SEND = False
 
 
@@ -44,14 +42,13 @@ def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
     """
     mail_host = utils.get_mail_host()
     if mail_host is None:
-        logger.warn("Cannot send notification email: please configure "
-                    "MailHost correctly.")
+        logger.warn("Cannot send notification email: please configure " "MailHost correctly.")
         # We print some info, which is perfect for checking in unit
         # tests.
-        print('Subject ={0}'.format(subject))
-        print('Addresses ={0}'.format(addresses))
-        print('Message =')
-        print(plain)
+        print ('Subject ={0}'.format(subject))
+        print ('Addresses ={0}'.format(addresses))
+        print ('Message =')
+        print (plain)
         return
 
     if not mfrom:
@@ -80,20 +77,23 @@ def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
             continue
         try:
             if USE_SECURE_SEND:
-                mail_host.secureSend(message=email_content,
-                                     mto=address,
-                                     mfrom=mfrom,
-                                     subject=subject,
-                                     charset=header_charset)
+                mail_host.secureSend(
+                    message=email_content,
+                    mto=address,
+                    mfrom=mfrom,
+                    subject=subject,
+                    charset=header_charset,
+                )
             else:
-                mail_host.send(email_content,
-                               mto=address,
-                               mfrom=mfrom,
-                               subject=subject,
-                               immediate=immediate,
-                               charset=header_charset)
+                mail_host.send(
+                    email_content,
+                    mto=address,
+                    mfrom=mfrom,
+                    subject=subject,
+                    immediate=immediate,
+                    charset=header_charset,
+                )
         except (socket.error, SMTPException, MailHostError):
-            logger.warn('Could not send email to %s with subject %s',
-                        address, subject)
+            logger.warn('Could not send email to %s with subject %s', address, subject)
         except:
             raise

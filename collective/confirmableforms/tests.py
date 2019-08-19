@@ -16,8 +16,7 @@ import unittest
 
 
 ptc.setupPloneSite()
-OPTIONFLAGS = (doctest.ELLIPSIS |
-               doctest.NORMALIZE_WHITESPACE)
+OPTIONFLAGS = doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE
 
 
 class MockMailHost(MailBase):
@@ -42,8 +41,7 @@ class MockMailHost(MailBase):
 
     def secureSend(self, message, mto, mfrom, **kwargs):
         kwargs['debug'] = True
-        result = MailBase.secureSend(self, message=message, mto=mto,
-                                     mfrom=mfrom, **kwargs)
+        result = MailBase.secureSend(self, message=message, mto=mto, mfrom=mfrom, **kwargs)
         self.messages.append(result)
 
     def validateSingleEmailAddress(self, address):
@@ -51,13 +49,11 @@ class MockMailHost(MailBase):
 
 
 class TestCase(ptc.FunctionalTestCase):
-
     def __init__(self, *args, **kwargs):
         super(TestCase, self).__init__(*args, **kwargs)
         self.browser = Browser()
 
     class layer(PloneSite):
-
         @classmethod
         def setUp(cls):
             pass
@@ -68,8 +64,7 @@ class TestCase(ptc.FunctionalTestCase):
 
     def install_pfg(self):
         fiveconfigure.debug_mode = True
-        zcml.load_config('configure.zcml',
-                         Products.PloneFormGen)
+        zcml.load_config('configure.zcml', Products.PloneFormGen)
 
         ztc.installPackage(Products.PloneFormGen)
         self.addProfile('Products.PloneFormGen:default')
@@ -78,8 +73,7 @@ class TestCase(ptc.FunctionalTestCase):
 
     def install_confirmableforms(self):
         fiveconfigure.debug_mode = True
-        zcml.load_config('configure.zcml',
-                         collective.confirmableforms)
+        zcml.load_config('configure.zcml', collective.confirmableforms)
 
         ztc.installPackage(collective.confirmableforms)
         self.addProfile('collective.confirmableforms:default')
@@ -100,10 +94,12 @@ class TestCase(ptc.FunctionalTestCase):
 
         def raising(self, info):
             import traceback
+
             traceback.print_tb(info[2])
-            print(info[1])
+            print (info[1])
 
         from Products.SiteErrorLog.SiteErrorLog import SiteErrorLog
+
         SiteErrorLog.raising = raising
 
     def login_as_user(self, username, password):
@@ -116,38 +112,35 @@ class TestCase(ptc.FunctionalTestCase):
         self.browser.getControl(name='submit').click()
 
     def login_as_manager(self):
-        self.login_as_user(ptc.portal_owner,
-                           ptc.default_password)
+        self.login_as_user(ptc.portal_owner, ptc.default_password)
 
 
 def test_suite():
-    return unittest.TestSuite([
-        ZopeDocFileSuite(
-            'tests.txt',
-            package='collective.confirmableforms',
-            optionflags=OPTIONFLAGS,
-            test_class=TestCase),
+    return unittest.TestSuite(
+        [
+            ZopeDocFileSuite(
+                'tests.txt',
+                package='collective.confirmableforms',
+                optionflags=OPTIONFLAGS,
+                test_class=TestCase,
+            ),
+            # Unit tests
+            # doctestunit.DocFileSuite(
+            #    'README.txt', package='collective.confirmableforms',
+            #    setUp=testing.setUp, tearDown=testing.tearDown),
+            # doctestunit.DocTestSuite(
+            #    module='collective.confirmableforms.mymodule',
+            #    setUp=testing.setUp, tearDown=testing.tearDown),
+            # Integration tests that use PloneTestCase
+            # ztc.ZopeDocFileSuite(
+            #    'README.txt', package='collective.confirmableforms',
+            #    test_class=TestCase),
+            # ztc.FunctionalDocFileSuite(
+            #    'browser.txt', package='collective.confirmableforms',
+            #    test_class=TestCase),
+        ]
+    )
 
-        # Unit tests
-        # doctestunit.DocFileSuite(
-        #    'README.txt', package='collective.confirmableforms',
-        #    setUp=testing.setUp, tearDown=testing.tearDown),
-
-        # doctestunit.DocTestSuite(
-        #    module='collective.confirmableforms.mymodule',
-        #    setUp=testing.setUp, tearDown=testing.tearDown),
-
-
-        # Integration tests that use PloneTestCase
-        # ztc.ZopeDocFileSuite(
-        #    'README.txt', package='collective.confirmableforms',
-        #    test_class=TestCase),
-
-        # ztc.FunctionalDocFileSuite(
-        #    'browser.txt', package='collective.confirmableforms',
-        #    test_class=TestCase),
-
-    ])
 
 if __name__ == '__main__':
     unittest.main(defaultTest='test_suite')
