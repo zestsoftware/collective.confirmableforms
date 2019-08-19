@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1.1 (unreleased)
+2.1.1 (2019-08-19)
 ------------------
 
 - Updated Dutch translations.  [maurits]
