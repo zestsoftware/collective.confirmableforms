@@ -3,6 +3,7 @@
 
 try:
     from email.utils import parseaddr, formataddr
+
     parseaddr, formataddr  # pyflakes
 except ImportError:
     # BBB for python2.4 (Plone 3)
@@ -17,6 +18,7 @@ from zope.component import getMultiAdapter
 
 try:
     from zope.component.hooks import getSite
+
     getSite  # pyflakes
 except ImportError:
     from zope.app.component.hooks import getSite
@@ -60,8 +62,7 @@ def get_mail_host():
     if portal is None:
         return None
     request = portal.REQUEST
-    ctrlOverview = getMultiAdapter((portal, request),
-                                   name='overview-controlpanel')
+    ctrlOverview = getMultiAdapter((portal, request), name='overview-controlpanel')
     mail_settings_correct = not ctrlOverview.mailhost_warning()
     if mail_settings_correct:
         mail_host = getToolByName(portal, 'MailHost', None)

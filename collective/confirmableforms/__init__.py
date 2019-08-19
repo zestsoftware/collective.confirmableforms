@@ -14,21 +14,20 @@ def initialize(context):
     import content  # noqa
 
     permissions = dict(
-        ConfirmedFormMailerAdapter=(
-            'confirmableforms: add Confirmed Form Mailer Adapter'),
+        ConfirmedFormMailerAdapter=('confirmableforms: add Confirmed Form Mailer Adapter')
     )
 
     # Initialize portal content
     content_types, constructors, ftis = process_types(
-        listTypes(config.PROJECTNAME),
-        config.PROJECTNAME)
+        listTypes(config.PROJECTNAME), config.PROJECTNAME
+    )
 
     allTypes = zip(content_types, constructors)
     for atype, constructor in allTypes:
         kind = "%s: %s" % (config.PROJECTNAME, atype.archetype_name)
         cmfutils.ContentInit(
             kind,
-            content_types=(atype, ),
+            content_types=(atype,),
             permission=permissions[atype.portal_type],
-            extra_constructors=(constructor, ),
+            extra_constructors=(constructor,),
         ).initialize(context)

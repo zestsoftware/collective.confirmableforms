@@ -47,8 +47,7 @@ def fgProcessActionAdapters(self, errors, fields=None, REQUEST=None):
     # Mark it as such.
     if not IConfirmedSubmission.providedBy(request):
         alsoProvides(request, IInitialSubmission)
-    return self._old_fgProcessActionAdapters(
-        errors, fields=fields, REQUEST=REQUEST)
+    return self._old_fgProcessActionAdapters(errors, fields=fields, REQUEST=REQUEST)
 
 
 def getRawActionAdapter(self):
@@ -72,7 +71,7 @@ def getRawActionAdapter(self):
             # We should either return only this, or all others.
             if initial:
                 # Return only this adapter.
-                return (adapter, )
+                return (adapter,)
             if confirmed:
                 # Ignore this adapter.
                 # Note: mail sending is handled by our browser view.

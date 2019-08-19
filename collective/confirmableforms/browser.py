@@ -8,7 +8,6 @@ import transaction
 
 
 class ConfirmedFormView(BrowserView):
-
     def __call__(self):
         box = self.context.get_box()
         secret = self.request.form.get('secret')
@@ -20,8 +19,7 @@ class ConfirmedFormView(BrowserView):
 
         alsoProvides(self.request, IConfirmedSubmission)
         form = self.context.get_form()
-        fields = [fo for fo in form._getFieldObjects()
-                  if not IField.providedBy(fo)]
+        fields = [fo for fo in form._getFieldObjects() if not IField.providedBy(fo)]
 
         # Put the data in the request.  Make it a dictionary,
         # otherwise the fg_result_view does not work, as an anonymous
@@ -35,8 +33,7 @@ class ConfirmedFormView(BrowserView):
             self.context.send_form(fields, self.request)
 
         # Process the other adapters.  First argument is 'errors'.
-        result = form.fgProcessActionAdapters(
-            {}, fields=fields, REQUEST=self.request)
+        result = form.fgProcessActionAdapters({}, fields=fields, REQUEST=self.request)
         if result:
             # We have an error.  Abort any changes.
             transaction.abort()
