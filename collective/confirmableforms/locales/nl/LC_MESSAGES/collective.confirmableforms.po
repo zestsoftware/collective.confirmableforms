@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.confirmableforms 1.0\n"
 "POT-Creation-Date: 2019-08-19 14:44+0000\n"
-"PO-Revision-Date: 2018-02-05 17:01+0100\n"
+"PO-Revision-Date: 2019-08-19 16:53+0200\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -37,12 +37,12 @@ msgstr "collective.confirmableforms"
 #. Default: "The e-mail address that will receive the e-mail asking for confirmation."
 #: ./content/confirmedFormMailerAdapter.py:44
 msgid "help_recipient_email"
-msgstr ""
+msgstr "Het e-mailadres dat de e-mail met de bevestigingslink zal ontvangen."
 
 #. Default: "\n                    A TALES expression that will be evaluated to override any value\n                    otherwise entered for the confirmation recipient e-mail address. You are strongly\n                    cautioned against using unvalidated data from the request for this purpose.\n                    Leave empty if unneeded. Your expression should evaluate as a string.\n                    PLEASE NOTE: errors in the evaluation of this expression will cause\n                    an error on form display.\n                "
 #: ./content/confirmedFormMailerAdapter.py:189
 msgid "help_recipient_override_text"
-msgstr ""
+msgstr "Een TALES expressie die gebruikt wordt om de waarde van het e-mailadres van de ontvanger van de bevestigingslink te overschrijven. We raden sterk af om niet gevalideerde data uit het request hiervoor te gebruiken. Laat leeg indien dit niet nodig is. De expressie moet een 'string' terug geven. MERK OP: fouten in de evaluatie van deze expressie zullen leiden tot fouten in het tonen van het formulier."
 
 #. Default: "After the user has confirmed the email address by clicking on the confirmation link, send the standard mail, as if this was a standard mail action adapter."
 #: ./content/confirmedFormMailerAdapter.py:165
@@ -57,7 +57,7 @@ msgstr "Selecteer een pagina die u wilt tonen na het bevestigen van het formulie
 #. Default: "\n                Choose a form field from which you wish to extract\n                input for the To header. If you choose anything other\n                than \"None\", this will override the \"Confirmation recipient's e-mail address\"\n                setting above. Be very cautious about allowing unguarded user\n                input for this purpose.\n                "
 #: ./content/confirmedFormMailerAdapter.py:61
 msgid "help_to_extract"
-msgstr ""
+msgstr "Kies een formulierveld vanwaar u invoer wilt extraheren voor de \"Aan\" header. Als u iets anders kiest dan \"Geen\" zal deze het \"E-mailadres van ontvanger bevestigingslink\" instelling van hierboven overschrijven. Wees erg voorzichtig met het toestaan van niet gecontroleerde input van gebruikers voor dit doel (om spam tegen te gaan)."
 
 #. Default: "Expiration time"
 #: ./content/confirmedFormMailerAdapter.py:147
@@ -92,12 +92,12 @@ msgstr "Inhoud van het bevestigingsbericht (platte tekst)"
 #. Default: "Confirmation recipient's e-mail address"
 #: ./content/confirmedFormMailerAdapter.py:41
 msgid "label_recipient_email"
-msgstr ""
+msgstr "E-mailadres van ontvanger bevestigingslink"
 
 #. Default: "Confirmation Recipient Expression"
 #: ./content/confirmedFormMailerAdapter.py:186
 msgid "label_recipient_override_text"
-msgstr ""
+msgstr "Geaddresseerde bevestigingslink expressie"
 
 #. Default: "We were not able to confirm this form. The data might have expired or the activation link has already been used."
 #: ./templates/form_confirmed_error.pt:15
@@ -127,4 +127,4 @@ msgstr "Onderwerp van het bevestigingsbericht"
 #. Default: "Extract Confirmation Recipient From"
 #: ./content/confirmedFormMailerAdapter.py:60
 msgid "label_to_extract"
-msgstr ""
+msgstr "Gebruik e-mailadres van ontvanger bevestigingslink van"

@@ -4,7 +4,7 @@ Changelog
 2.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Updated Dutch translations.  [maurits]
 
 
 2.1.0 (2019-08-19)
