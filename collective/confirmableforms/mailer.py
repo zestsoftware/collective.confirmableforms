@@ -48,10 +48,10 @@ def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
                     "MailHost correctly.")
         # We print some info, which is perfect for checking in unit
         # tests.
-        print 'Subject =', subject
-        print 'Addresses =', addresses
-        print 'Message ='
-        print plain
+        print('Subject ={0}'.format(subject))
+        print('Addresses ={0}'.format(addresses))
+        print('Message =')
+        print(plain)
         return
 
     if not mfrom:
