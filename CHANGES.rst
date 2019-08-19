@@ -4,6 +4,11 @@ Changelog
 2.0.1 (unreleased)
 ------------------
 
+- Added fields for setting the confirmation email address.
+  As fallback, use the standard recipent email address.
+  Until now, we only used the address of the ``replyto`` field.
+  [maurits]
+
 - Pass ``wrappedFields`` option to the confirm mailer templates.
   Same as PloneFormGen does for the standard mailer.  [maurits]
 

@@ -7,9 +7,14 @@ from collective.confirmableforms.mailer import simple_send_mail
 from collective.confirmableforms.utils import obj_to_pobj
 from collective.depositbox.store import Box
 from Products.Archetypes import atapi
+from Products.Archetypes.utils import shasattr
 from Products.CMFCore import permissions
+from Products.PloneFormGen.config import EDIT_ADDRESSING_PERMISSION
+from Products.PloneFormGen.config import EDIT_ADVANCED_PERMISSION
+from Products.PloneFormGen.config import EDIT_TALES_PERMISSION
 from Products.PloneFormGen.content.formMailerAdapter import FormMailerAdapter
 from Products.PloneFormGen.content.formMailerAdapter import formMailerAdapterSchema  # noqa
+from Products.TALESField import TALESString
 from Products.TemplateFields import ZPTField as ZPTField
 from zope.interface import implementer
 
@@ -21,6 +26,48 @@ confirmedSchema = atapi.Schema(
             required=True,
             widget=atapi.StringWidget(
                 label=_(u'label_title_mail', default=u'Subject for the confirmation e-mail')
+            ),
+            schemata='confirmation',
+        ),
+        atapi.StringField(
+            'confirmation_recipient_email',
+            searchable=0,
+            required=0,
+            default_method='getDefaultRecipient',
+            write_permission=EDIT_ADDRESSING_PERMISSION,
+            read_permission=permissions.ModifyPortalContent,
+            validators=('isEmail',),
+            widget=atapi.StringWidget(
+                label=_(
+                    u'label_recipient_email', default=u"Confirmation recipient's e-mail address"
+                ),
+                description=_(
+                    u'help_recipient_email',
+                    default=u'The e-mail address that will receive the e-mail asking for confirmation.',
+                ),
+            ),
+            schemata='confirmation',
+        ),
+        atapi.StringField(
+            'confirmation_to_field',
+            searchable=0,
+            required=0,
+            default='#NONE#',
+            write_permission=EDIT_ADVANCED_PERMISSION,
+            read_permission=permissions.ModifyPortalContent,
+            vocabulary='fieldsDisplayList',
+            widget=atapi.SelectionWidget(
+                label=_(u'label_to_extract', default=u'Extract Confirmation Recipient From'),
+                description=_(
+                    u'help_to_extract',
+                    default=u"""
+                Choose a form field from which you wish to extract
+                input for the To header. If you choose anything other
+                than "None", this will override the "Confirmation recipient's e-mail address"
+                setting above. Be very cautious about allowing unguarded user
+                input for this purpose.
+                """,
+                ),
             ),
             schemata='confirmation',
         ),
@@ -125,6 +172,34 @@ confirmedSchema = atapi.Schema(
             ),
             schemata='confirmation',
         ),
+        TALESString(
+            'confirmationRecipientOverride',
+            schemata='overrides',
+            searchable=0,
+            required=0,
+            validators=('talesvalidator',),
+            default='',
+            write_permission=EDIT_TALES_PERMISSION,
+            read_permission=permissions.ModifyPortalContent,
+            isMetadata=True,  # just to hide from base view
+            widget=atapi.StringWidget(
+                label=_(
+                    u'label_recipient_override_text', default=u"Confirmation Recipient Expression"
+                ),
+                description=_(
+                    u'help_recipient_override_text',
+                    default=u"""
+                    A TALES expression that will be evaluated to override any value
+                    otherwise entered for the confirmation recipient e-mail address. You are strongly
+                    cautioned against using unvalidated data from the request for this purpose.
+                    Leave empty if unneeded. Your expression should evaluate as a string.
+                    PLEASE NOTE: errors in the evaluation of this expression will cause
+                    an error on form display.
+                """,
+                ),
+                size=70,
+            ),
+        ),
     )
 )
 confirmedFormMailerAdapterSchema = formMailerAdapterSchema.copy() + confirmedSchema
@@ -175,28 +250,51 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
 
     security.declareProtected(permissions.View, 'get_mail_receiver')
 
-    def get_mail_receiver(self):
-        # This does not really get the email value but checks that
-        # there is a replyto field available in the form.
-        form = self.get_form()
-        try:
-            return form.get('replyto')
-        except:
-            return None
+    def get_mail_receiver(self, request=None):
+        request = request or self.REQUEST
+
+        # 1. Check the various confirmation recipient fields.
+        if (
+            shasattr(self, 'confirmationRecipientOverride')
+            and self.getRawConfirmationRecipientOverride()
+        ):
+            recip_email = self.getConfirmationRecipientOverride()
+        else:
+            recip_email = None
+            if shasattr(self, 'confirmation_to_field'):
+                recip_email = request.form.get(self.confirmation_to_field, None)
+            if not recip_email:
+                recip_email = self.getConfirmation_recipient_email()
+        recip_email = self._destFormat(recip_email)
+        if recip_email:
+            return recip_email
+
+        # 2. Check the various standard recipient fields.
+        if shasattr(self, 'recipientOverride') and self.getRawRecipientOverride():
+            recip_email = self.getRecipientOverride()
+        else:
+            recip_email = None
+            if shasattr(self, 'to_field'):
+                recip_email = request.form.get(self.to_field, None)
+            if not recip_email:
+                recip_email = self.recipient_email
+        recip_email = self._destFormat(recip_email)
+        if recip_email:
+            return recip_email
+
+        raise ValueError("No confirmation recipient address found.")
 
     security.declarePrivate('send_confirmation_email')
 
     def send_confirmation_email(self, fields, REQUEST=None, **kwargs):
-        receiver_field = self.get_mail_receiver()
-
-        if receiver_field is None:
-            # Not much to do in that case.
-            return
-
-        if 'request' in kwargs:
+        if REQUEST is not None:
+            request = REQUEST
+        elif 'request' in kwargs:
             request = kwargs['request']
         else:
             request = self.REQUEST
+
+        mail_to = self.get_mail_receiver(request=request)
 
         # We will pass the fields with (html) values to the mail templates.
         all_fields = [
@@ -225,7 +323,6 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
         mail_title = self.getTitle_mail()
         mail_plain_body = self.getPlain_mail(wrappedFields=live_fields).strip()
         mail_html_body = self.getHtml_mail(wrappedFields=live_fields).strip()
-        mail_to = self.REQUEST.form.get('replyto')
         mail_from = self.getSender_mail()
 
         box = self.get_box()
