@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1.0 (unreleased)
+2.1.0 (2019-08-19)
 ------------------
 
 - Added fields for setting the confirmation email address.
