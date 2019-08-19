@@ -4,7 +4,8 @@ Changelog
 2.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Pass ``wrappedFields`` option to the confirm mailer templates.
+  Same as PloneFormGen does for the standard mailer.  [maurits]
 
 
 2.0.0 (2018-02-05)

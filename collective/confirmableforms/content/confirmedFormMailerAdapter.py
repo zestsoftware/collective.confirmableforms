@@ -186,16 +186,45 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
 
     security.declarePrivate('send_confirmation_email')
 
-    def send_confirmation_email(self, fields, REQUEST=None):
+    def send_confirmation_email(self, fields, REQUEST=None, **kwargs):
         receiver_field = self.get_mail_receiver()
 
         if receiver_field is None:
             # Not much to do in that case.
             return
 
+        if 'request' in kwargs:
+            request = kwargs['request']
+        else:
+            request = self.REQUEST
+
+        # We will pass the fields with (html) values to the mail templates.
+        all_fields = [
+            f
+            for f in fields
+            if not (f.isLabel() or f.isFileField())
+            and not (getattr(self, 'showAll', True) and f.getServerSide())
+        ]
+
+        # which fields should we show?
+        if getattr(self, 'showAll', True):
+            live_fields = all_fields
+        else:
+            live_fields = [
+                f for f in all_fields if f.fgField.getName() in getattr(self, 'showFields', ())
+            ]
+
+        if not getattr(self, 'includeEmpties', True):
+            all_fields = live_fields
+            live_fields = []
+            for f in all_fields:
+                value = f.htmlValue(request)
+                if value and value != 'No Input':
+                    live_fields.append(f)
+
         mail_title = self.getTitle_mail()
-        mail_plain_body = self.getPlain_mail().strip()
-        mail_html_body = self.getHtml_mail().strip()
+        mail_plain_body = self.getPlain_mail(wrappedFields=live_fields).strip()
+        mail_html_body = self.getHtml_mail(wrappedFields=live_fields).strip()
         mail_to = self.REQUEST.form.get('replyto')
         mail_from = self.getSender_mail()
 
