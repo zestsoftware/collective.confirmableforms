@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1.2 (unreleased)
+2.1.2 (2021-12-24)
 ------------------
 
 - Avoid CSRF warning when confirming.  [maurits]
