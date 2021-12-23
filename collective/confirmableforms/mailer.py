@@ -12,11 +12,11 @@ import pkg_resources
 import socket
 
 
-logger = logging.getLogger('collective.confirmableforms')
+logger = logging.getLogger("collective.confirmableforms")
 
-zope2_egg = pkg_resources.working_set.find(pkg_resources.Requirement.parse('Zope2'))
+zope2_egg = pkg_resources.working_set.find(pkg_resources.Requirement.parse("Zope2"))
 USE_SECURE_SEND = True
-if zope2_egg and (zope2_egg.parsed_version >= pkg_resources.parse_version('2.12.3')):
+if zope2_egg and (zope2_egg.parsed_version >= pkg_resources.parse_version("2.12.3")):
     USE_SECURE_SEND = False
 
 
@@ -47,9 +47,9 @@ def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
         )
         # We print some info, which is perfect for checking in unit
         # tests.
-        print('Subject ={0}'.format(subject))
-        print('Addresses ={0}'.format(addresses))
-        print('Message =')
+        print("Subject ={0}".format(subject))
+        print("Addresses ={0}".format(addresses))
+        print("Message =")
         print(plain)
         return
 
@@ -58,12 +58,12 @@ def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
 
     header_charset = utils.get_charset()
 
-    text_part = MIMEText(plain, 'plain', header_charset)
-    html_part = MIMEText(html, 'html', header_charset)
+    text_part = MIMEText(plain, "plain", header_charset)
+    html_part = MIMEText(html, "html", header_charset)
 
     if plain and html:
-        email_content = MIMEMultipart('alternative')
-        email_content.epilogue = ''
+        email_content = MIMEMultipart("alternative")
+        email_content.epilogue = ""
         email_content.attach(text_part)
         email_content.attach(html_part)
     elif plain:
@@ -72,7 +72,7 @@ def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
         email_content = html_part
     else:
         # Hm, that's weird.
-        email_content = ''
+        email_content = ""
 
     for address in addresses:
         if not address:
@@ -96,6 +96,6 @@ def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
                     charset=header_charset,
                 )
         except (socket.error, SMTPException, MailHostError):
-            logger.warn('Could not send email to %s with subject %s', address, subject)
+            logger.warn("Could not send email to %s with subject %s", address, subject)
         except:
             raise

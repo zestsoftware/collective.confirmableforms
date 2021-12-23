@@ -24,7 +24,7 @@ except ImportError:
     from zope.app.component.hooks import getSite
 
 
-DEFAULT_CHARSET = 'utf-8'
+DEFAULT_CHARSET = "utf-8"
 
 
 def get_charset():
@@ -41,9 +41,9 @@ def get_charset():
     portal = getSite()
     if portal is None:
         return DEFAULT_CHARSET
-    charset = portal.getProperty('email_charset', '')
+    charset = portal.getProperty("email_charset", "")
     if not charset:
-        charset = 'utf-8'
+        charset = "utf-8"
     return charset
 
 
@@ -61,19 +61,19 @@ def get_mail_host():
     if portal is None:
         return None
     request = portal.REQUEST
-    ctrlOverview = getMultiAdapter((portal, request), name='overview-controlpanel')
+    ctrlOverview = getMultiAdapter((portal, request), name="overview-controlpanel")
     mail_settings_correct = not ctrlOverview.mailhost_warning()
     if mail_settings_correct:
-        mail_host = getToolByName(portal, 'MailHost', None)
+        mail_host = getToolByName(portal, "MailHost", None)
         return mail_host
 
 
 def get_mail_from_address():
     portal = getSite()
     if portal is None:
-        return ''
-    from_address = portal.getProperty('email_from_address', '')
-    from_name = portal.getProperty('email_from_name', '')
+        return ""
+    from_address = portal.getProperty("email_from_address", "")
+    from_name = portal.getProperty("email_from_name", "")
     mfrom = formataddr((from_name, from_address))
     if parseaddr(mfrom)[1] != from_address:
         # formataddr probably got confused by special characters.

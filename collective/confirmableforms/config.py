@@ -1,1 +1,1 @@
-PROJECTNAME = 'collective.confirmableforms'
+PROJECTNAME = "collective.confirmableforms"

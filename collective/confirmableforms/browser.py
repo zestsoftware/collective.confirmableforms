@@ -10,8 +10,8 @@ import transaction
 class ConfirmedFormView(BrowserView):
     def __call__(self):
         box = self.context.get_box()
-        secret = self.request.form.get('secret')
-        email = self.request.form.get('email')
+        secret = self.request.form.get("secret")
+        email = self.request.form.get("email")
         data = box.pop(secret, token=email)
 
         if data is None:
@@ -37,7 +37,7 @@ class ConfirmedFormView(BrowserView):
         if result:
             # We have an error.  Abort any changes.
             transaction.abort()
-            IStatusMessage(self.request).addStatusMessage(result, type='error')
+            IStatusMessage(self.request).addStatusMessage(result, type="error")
             return self.index()
 
         # Get the thank you page.
@@ -46,5 +46,5 @@ class ConfirmedFormView(BrowserView):
             thankspage = form.thanksPage
         thanks = form.get(thankspage)
         if thanks is None:
-            thanks = form.unrestrictedTraverse('fg_result_view')
+            thanks = form.unrestrictedTraverse("fg_result_view")
         return thanks()

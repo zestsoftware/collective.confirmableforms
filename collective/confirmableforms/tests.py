@@ -40,7 +40,7 @@ class MockMailHost(MailBase):
         self.messages.append(message)
 
     def secureSend(self, message, mto, mfrom, **kwargs):
-        kwargs['debug'] = True
+        kwargs["debug"] = True
         result = MailBase.secureSend(
             self, message=message, mto=mto, mfrom=mfrom, **kwargs
         )
@@ -66,26 +66,26 @@ class TestCase(ptc.FunctionalTestCase):
 
     def install_pfg(self):
         fiveconfigure.debug_mode = True
-        zcml.load_config('configure.zcml', Products.PloneFormGen)
+        zcml.load_config("configure.zcml", Products.PloneFormGen)
 
         ztc.installPackage(Products.PloneFormGen)
-        self.addProfile('Products.PloneFormGen:default')
+        self.addProfile("Products.PloneFormGen:default")
 
         fiveconfigure.debug_mode = False
 
     def install_confirmableforms(self):
         fiveconfigure.debug_mode = True
-        zcml.load_config('configure.zcml', collective.confirmableforms)
+        zcml.load_config("configure.zcml", collective.confirmableforms)
 
         ztc.installPackage(collective.confirmableforms)
-        self.addProfile('collective.confirmableforms:default')
+        self.addProfile("collective.confirmableforms:default")
 
         ztc.installPackage(collective.confirmableforms)
         fiveconfigure.debug_mode = False
 
     def afterSetUp(self):
         self.portal._original_MailHost = self.portal.MailHost
-        self.portal.MailHost = mailhost = MockMailHost('MailHost')
+        self.portal.MailHost = mailhost = MockMailHost("MailHost")
         sm = getSiteManager(context=self.portal)
         sm.unregisterUtility(provided=IMailHost)
         sm.registerUtility(mailhost, provided=IMailHost)
@@ -107,11 +107,11 @@ class TestCase(ptc.FunctionalTestCase):
     def login_as_user(self, username, password):
         portal_url = self.portal.absolute_url()
 
-        self.browser.open('%s/logout' % portal_url)
-        self.browser.open('%s/login_form' % portal_url)
-        self.browser.getControl(name='__ac_name').value = username
-        self.browser.getControl(name='__ac_password').value = password
-        self.browser.getControl(name='submit').click()
+        self.browser.open("%s/logout" % portal_url)
+        self.browser.open("%s/login_form" % portal_url)
+        self.browser.getControl(name="__ac_name").value = username
+        self.browser.getControl(name="__ac_password").value = password
+        self.browser.getControl(name="submit").click()
 
     def login_as_manager(self):
         self.login_as_user(ptc.portal_owner, ptc.default_password)
@@ -121,8 +121,8 @@ def test_suite():
     return unittest.TestSuite(
         [
             ZopeDocFileSuite(
-                'tests.txt',
-                package='collective.confirmableforms',
+                "tests.txt",
+                package="collective.confirmableforms",
                 optionflags=OPTIONFLAGS,
                 test_class=TestCase,
             ),
@@ -144,5 +144,5 @@ def test_suite():
     )
 
 
-if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')
+if __name__ == "__main__":
+    unittest.main(defaultTest="test_suite")

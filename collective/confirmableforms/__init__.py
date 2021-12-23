@@ -15,7 +15,7 @@ def initialize(context):
 
     permissions = dict(
         ConfirmedFormMailerAdapter=(
-            'confirmableforms: add Confirmed Form Mailer Adapter'
+            "confirmableforms: add Confirmed Form Mailer Adapter"
         )
     )
 
