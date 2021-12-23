@@ -41,7 +41,9 @@ class MockMailHost(MailBase):
 
     def secureSend(self, message, mto, mfrom, **kwargs):
         kwargs['debug'] = True
-        result = MailBase.secureSend(self, message=message, mto=mto, mfrom=mfrom, **kwargs)
+        result = MailBase.secureSend(
+            self, message=message, mto=mto, mfrom=mfrom, **kwargs
+        )
         self.messages.append(result)
 
     def validateSingleEmailAddress(self, address):
@@ -96,7 +98,7 @@ class TestCase(ptc.FunctionalTestCase):
             import traceback
 
             traceback.print_tb(info[2])
-            print (info[1])
+            print(info[1])
 
         from Products.SiteErrorLog.SiteErrorLog import SiteErrorLog
 

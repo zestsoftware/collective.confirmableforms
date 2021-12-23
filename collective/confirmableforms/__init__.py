@@ -14,7 +14,9 @@ def initialize(context):
     import content  # noqa
 
     permissions = dict(
-        ConfirmedFormMailerAdapter=('confirmableforms: add Confirmed Form Mailer Adapter')
+        ConfirmedFormMailerAdapter=(
+            'confirmableforms: add Confirmed Form Mailer Adapter'
+        )
     )
 
     # Initialize portal content

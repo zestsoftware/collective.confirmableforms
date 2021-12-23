@@ -42,13 +42,15 @@ def simple_send_mail(plain, html, addresses, mfrom, subject, immediate=True):
     """
     mail_host = utils.get_mail_host()
     if mail_host is None:
-        logger.warn("Cannot send notification email: please configure " "MailHost correctly.")
+        logger.warn(
+            "Cannot send notification email: please configure " "MailHost correctly."
+        )
         # We print some info, which is perfect for checking in unit
         # tests.
-        print ('Subject ={0}'.format(subject))
-        print ('Addresses ={0}'.format(addresses))
-        print ('Message =')
-        print (plain)
+        print('Subject ={0}'.format(subject))
+        print('Addresses ={0}'.format(addresses))
+        print('Message =')
+        print(plain)
         return
 
     if not mfrom:

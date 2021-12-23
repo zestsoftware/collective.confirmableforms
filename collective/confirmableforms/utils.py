@@ -48,8 +48,7 @@ def get_charset():
 
 
 def su(value):
-    """Return safe unicode version of value.
-    """
+    """Return safe unicode version of value."""
     return safe_unicode(value, encoding=get_charset())
 
 
@@ -83,7 +82,7 @@ def get_mail_from_address():
 
 
 def obj_to_pobj(o):
-    """ Return an object to a persistent object.
+    """Return an object to a persistent object.
     Only works on list and dictionaries for now.
     """
 

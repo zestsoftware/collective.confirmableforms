@@ -13,7 +13,9 @@ from Products.PloneFormGen.config import EDIT_ADDRESSING_PERMISSION
 from Products.PloneFormGen.config import EDIT_ADVANCED_PERMISSION
 from Products.PloneFormGen.config import EDIT_TALES_PERMISSION
 from Products.PloneFormGen.content.formMailerAdapter import FormMailerAdapter
-from Products.PloneFormGen.content.formMailerAdapter import formMailerAdapterSchema  # noqa
+from Products.PloneFormGen.content.formMailerAdapter import (
+    formMailerAdapterSchema,
+)  # noqa
 from Products.TALESField import TALESString
 from Products.TemplateFields import ZPTField as ZPTField
 from zope.interface import implementer
@@ -25,7 +27,9 @@ confirmedSchema = atapi.Schema(
             'title_mail',
             required=True,
             widget=atapi.StringWidget(
-                label=_(u'label_title_mail', default=u'Subject for the confirmation e-mail')
+                label=_(
+                    u'label_title_mail', default=u'Subject for the confirmation e-mail'
+                )
             ),
             schemata='confirmation',
         ),
@@ -39,7 +43,8 @@ confirmedSchema = atapi.Schema(
             validators=('isEmail',),
             widget=atapi.StringWidget(
                 label=_(
-                    u'label_recipient_email', default=u"Confirmation recipient's e-mail address"
+                    u'label_recipient_email',
+                    default=u"Confirmation recipient's e-mail address",
                 ),
                 description=_(
                     u'help_recipient_email',
@@ -57,7 +62,9 @@ confirmedSchema = atapi.Schema(
             read_permission=permissions.ModifyPortalContent,
             vocabulary='fieldsDisplayList',
             widget=atapi.SelectionWidget(
-                label=_(u'label_to_extract', default=u'Extract Confirmation Recipient From'),
+                label=_(
+                    u'label_to_extract', default=u'Extract Confirmation Recipient From'
+                ),
                 description=_(
                     u'help_to_extract',
                     default=u"""
@@ -87,7 +94,8 @@ confirmedSchema = atapi.Schema(
             required=False,
             widget=atapi.TextAreaWidget(
                 label=_(
-                    u'label_plain_mail', default=u'Content of the confirmation email (plain text)'
+                    u'label_plain_mail',
+                    default=u'Content of the confirmation email (plain text)',
                 ),
                 description=_(
                     u'label_help_plain_mail',
@@ -106,7 +114,10 @@ confirmedSchema = atapi.Schema(
             required=False,
             default_output_type='text/x-html-safe',
             widget=atapi.TextAreaWidget(
-                label=_(u'label_html_mail', default=u'Content of the confirmation email (HTML)'),
+                label=_(
+                    u'label_html_mail',
+                    default=u'Content of the confirmation email (HTML)',
+                ),
                 description=_(
                     u'label_help_html_mail',
                     default=(
@@ -160,7 +171,8 @@ confirmedSchema = atapi.Schema(
             languageIndependent=1,
             widget=atapi.BooleanWidget(
                 label=_(
-                    u'label_send_standard_mail', default=u'Send standard mail after confirmation'
+                    u'label_send_standard_mail',
+                    default=u'Send standard mail after confirmation',
                 ),
                 description=_(
                     u'help_send_standard_mail',
@@ -184,7 +196,8 @@ confirmedSchema = atapi.Schema(
             isMetadata=True,  # just to hide from base view
             widget=atapi.StringWidget(
                 label=_(
-                    u'label_recipient_override_text', default=u"Confirmation Recipient Expression"
+                    u'label_recipient_override_text',
+                    default=u"Confirmation Recipient Expression",
                 ),
                 description=_(
                     u'help_recipient_override_text',
@@ -309,7 +322,9 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
             live_fields = all_fields
         else:
             live_fields = [
-                f for f in all_fields if f.fgField.getName() in getattr(self, 'showFields', ())
+                f
+                for f in all_fields
+                if f.fgField.getName() in getattr(self, 'showFields', ())
             ]
 
         if not getattr(self, 'includeEmpties', True):
@@ -329,12 +344,18 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
         secret = box.put(obj_to_pobj(REQUEST.form), token=mail_to)
         box.confirm(secret, token=mail_to)
 
-        confirm_url = '%s/confirm-form?secret=%s&email=%s' % (self.absolute_url(), secret, mail_to)
+        confirm_url = '%s/confirm-form?secret=%s&email=%s' % (
+            self.absolute_url(),
+            secret,
+            mail_to,
+        )
 
         mail_plain_body = mail_plain_body.replace('[[confirmation_link]]', confirm_url)
         mail_html_body = mail_html_body.replace('[[confirmation_link]]', confirm_url)
 
-        simple_send_mail(mail_plain_body, mail_html_body, [mail_to], mail_from, mail_title)
+        simple_send_mail(
+            mail_plain_body, mail_html_body, [mail_to], mail_from, mail_title
+        )
 
 
 atapi.registerType(ConfirmedFormMailerAdapter, config.PROJECTNAME)
