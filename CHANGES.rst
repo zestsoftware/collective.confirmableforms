@@ -4,6 +4,8 @@ Changelog
 2.1.2 (unreleased)
 ------------------
 
+- Avoid CSRF warning when confirming.  [maurits]
+
 - Put email address without brackets as token in the box.
   [maurits]
 
