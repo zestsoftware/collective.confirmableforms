@@ -4,7 +4,8 @@ Changelog
 2.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Put email address without brackets as token in the box.
+  [maurits]
 
 
 2.1.1 (2019-08-19)

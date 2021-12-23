@@ -278,7 +278,6 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
                 recip_email = request.form.get(self.confirmation_to_field, None)
             if not recip_email:
                 recip_email = self.getConfirmation_recipient_email()
-        recip_email = self._destFormat(recip_email)
         if recip_email:
             return recip_email
 
@@ -291,7 +290,6 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
                 recip_email = request.form.get(self.to_field, None)
             if not recip_email:
                 recip_email = self.recipient_email
-        recip_email = self._destFormat(recip_email)
         if recip_email:
             return recip_email
 
@@ -352,7 +350,7 @@ class ConfirmedFormMailerAdapter(FormMailerAdapter):
 
         mail_plain_body = mail_plain_body.replace("[[confirmation_link]]", confirm_url)
         mail_html_body = mail_html_body.replace("[[confirmation_link]]", confirm_url)
-
+        mail_to = self._destFormat(mail_to)
         simple_send_mail(
             mail_plain_body, mail_html_body, [mail_to], mail_from, mail_title
         )
