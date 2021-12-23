@@ -6,6 +6,11 @@ from zope.interface import alsoProvides
 
 import transaction
 
+try:
+    from plone.protect.interfaces import IDisableCSRFProtection
+except ImportError:
+    IDisableCSRFProtection = None
+
 
 class ConfirmedFormView(BrowserView):
     def __call__(self):
@@ -13,6 +18,10 @@ class ConfirmedFormView(BrowserView):
         secret = self.request.form.get("secret")
         email = self.request.form.get("email")
         data = box.pop(secret, token=email)
+        if IDisableCSRFProtection:
+            # We may have changed data, and this is usually a GET request,
+            # so we should avoid a CSRF warning.
+            alsoProvides(self.request, IDisableCSRFProtection)
 
         if data is None:
             return self.index()
